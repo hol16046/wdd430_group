@@ -1,9 +1,14 @@
+import Filter from "./ui/filter";
+import Features from "./ui/features";
+import Image from "next/image";
+import Products from "./ui/products";
+
 export default function Home() {
   return (
     <main className="">
       <header>
         <div id='logo'>
-          <img src="./public/logo.webp"></img>
+          <Image src="/logo.webp" width={100} height={60} alt="Company Logo"/>
         </div>
         <nav>
           <ul>
@@ -16,29 +21,15 @@ export default function Home() {
         <div id='calendar'>Calender</div>
       </header>
 
-      <div id="content-layout">
+      <div className="container grid grid-cols-5 gap-4">
         <aside id='filters'>
-          Filters
+          <Filter />
         </aside>
        
-        <section id="product-1" className='featured-products'>
-        <h3>Featured</h3>
-        </section>
-        <section id="product-2"  className='featured-products'>
-          <h3>Featured</h3>
-        </section>
-        <section id="product-3" className='featured-products'>
-        <h3>Featured</h3>
-        </section>
-        <section id="product-4" className='featured-products'>
-        <h3>Featured</h3>
-        </section>
+       <Products/>
     
-        <aside id='featured-artist'>
-          Featured artist
-        </aside>
-        <aside id='featured-product' >
-          Featured product
+        <aside id='featured'>
+          <Features/>
         </aside>
       </div>
       <footer></footer>
