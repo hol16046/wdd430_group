@@ -4,11 +4,12 @@ import Image from "next/image";
 import Products from "./ui/products";
 import Search from './ui/search';
 import NavLinks from "./ui/nav-links";
+import Footer from "./ui/footer";
 
 export default function Home() {
   return (
     <main>
-      <header className="white-800 py-8 container mx-auto grid grid-cols-4 grid-rows-2">
+      <header className="white-1000 py-8 container mx-auto grid grid-cols-4 grid-rows-2">
           {/* Logo */}
           <div className="flex items-center justify-start col-start-1">
             <div id='logo'>
@@ -42,7 +43,7 @@ export default function Home() {
           <Features/>
         </aside>
       </div>
-      <footer></footer>
+      <Footer/>
     </main>
   );
 }
