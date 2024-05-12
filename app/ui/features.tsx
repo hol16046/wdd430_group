@@ -3,6 +3,7 @@ import Image from "next/image"
 export default function Features(){
     return(
         <>
+        <div className="grid rounded-lg border-4 p-4">
             <h3>Featured Artist</h3>
             <div>
                 <Image
@@ -22,6 +23,7 @@ export default function Features(){
                 className="hidden md:block"
                 alt="Featured Person"
                 />
+            </div>
             </div>
         </>
     )

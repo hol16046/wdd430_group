@@ -27,12 +27,12 @@ export default function Home() {
           </nav>
           <div id='calendar' className="text-sm ml-4" >Calendar</div>
           {/* Search and Calendar */}
-          <div className="col-start-1 col-span-4 md:col-start-2 md:col-span-2 px-10 content-center">
+          <div className="col-start-1 col-span-4 md:col-start-2 md:col-span-2 px-10">
             <Search placeholder="Search products..." />
           </div>
       </header>
 
-      <div className="container grid grid-cols-5 gap-4">
+      <div className="container grid grid-cols-5 gap-4 ml-10">
         <aside id='filters'>
           <Filter />
         </aside>
