@@ -8,7 +8,7 @@ import Footer from "./ui/footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="font-red-hat">
       <header className="white-1000 py-8 container mx-auto grid grid-cols-4 grid-rows-2">
           {/* Logo */}
           <div className="flex items-center justify-start col-start-1">

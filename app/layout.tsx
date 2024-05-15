@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, Red_Hat_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const redHat = Red_Hat_Display({ 
+  subsets: ["latin"],
+  display: "swap",
+  variable: '--font-red-hat',
+});
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: '--font-playfair',
+});
 
 export const metadata: Metadata = {
   title: "Hand Crafted Haven",
@@ -16,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${redHat.variable} ${playfair.variable}`}>{children}</body>
     </html>
   );
 }
