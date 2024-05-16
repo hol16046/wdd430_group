@@ -39,14 +39,14 @@ export default function Home() {
           </div>
       </header>
 
-      <div className="container grid grid-cols-5 gap-4 ml-10">
-        <aside id='filters'>
+      <div className="container grid sm:grid-cols-5 sm:gap-4 sm:ml-10">
+        <aside id='filters' className="hidden sm:grid">
           <Filter />
         </aside>
        
        <Products/>
     
-        <aside id='featured'>
+        <aside className="hidden sm:grid" id='featured'>
           <Features/>
         </aside>
       </div>

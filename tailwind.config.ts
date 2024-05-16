@@ -9,17 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "theme-orange": "#F58B00",
-        "theme-light-orange": "#FFB347",
-        "theme-white": "#F6F6F3",
-        "theme-teal": "#9CE7E2",
-        "theme-dark-teal": "#13534C",
         // Updated theme colors for contrast
-        // "theme-orange": "#F58B00",
-        // "theme-rust": "#B84000",
-        // "theme-white": "#F6F6F3",
-        // "theme-teal": "#2CB5AC",
-        // "theme-dark-teal": "#13534C" 
+        "theme-orange": "#F58B00",
+        "theme-rust": "#B84000",
+        "theme-white": "#F6F6F3",
+        "theme-teal": "#2CB5AC",
+        "theme-dark-teal": "#13534C" 
 
       },
       backgroundImage: {
