@@ -3,7 +3,7 @@ import Product from "./ind-product"
 
 export default function Products() {
     return(
-        <section className="grid mb-10 grid-cols-3 gap-4 col-span-3">
+        <section className="mx-auto mb-10 w-[80%] grid gap-4 sm:grid-cols-3 sm:col-span-3">
             <Product/>
             <Product/>
             <Product/>
