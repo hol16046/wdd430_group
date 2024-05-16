@@ -33,7 +33,7 @@ export default function NavLinks() {
             className={clsx(
               'flex-auto border border-white rounded hover:border-gray-200 text-black-500 hover:bg-gray-200 py-2 px-4',
               {
-                'text-theme-orange': pathname === link.href,
+                'text-theme-dark-teal': pathname === link.href,
               },
             )}
               >

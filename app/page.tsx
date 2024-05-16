@@ -5,6 +5,11 @@ import Products from "./ui/products";
 import Search from './ui/search';
 import NavLinks from "./ui/nav-links";
 import Footer from "./ui/footer";
+import { Suspense } from "react";
+
+function SearchFallback() {
+    return <>placeholder</>
+}
 
 export default function Home() {
   return (
@@ -28,7 +33,9 @@ export default function Home() {
           <div id='calendar' className="text-sm ml-4" >Calendar</div>
           {/* Search and Calendar */}
           <div className="col-start-1 col-span-4 md:col-start-2 md:col-span-2 px-10">
-            <Search placeholder="Search products..." />
+            <Suspense fallback={<SearchFallback/>}>
+                <Search placeholder="Search products..." />
+            </Suspense>          
           </div>
       </header>
 
