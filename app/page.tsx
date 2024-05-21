@@ -1,56 +1,26 @@
-import Filter from "./ui/filter";
-import Features from "./ui/features";
-import Image from "next/image";
-import Products from "./ui/products";
-import Search from './ui/search';
-import NavLinks from "./ui/nav-links";
-import Footer from "./ui/footer";
-import { Suspense } from "react";
-
-function SearchFallback() {
-    return <>placeholder</>
-}
+import Header from './ui/header/header';
+import Filter from './ui/filter';
+import Features from './ui/features';
+import ProductsGrid from './ui/products/products-grid';
+import Footer from './ui/footer';
 
 export default function Home() {
   return (
-    <main className="font-red-hat">
-      <header className="white-1000 py-8 container mx-auto grid grid-cols-4 grid-rows-2">
-          {/* Logo */}
-          <div className="flex items-center justify-start col-start-1">
-            <div id='logo'>
-              <Image
-                src="/logo-transparent.png"
-                alt="Company Logo"
-                width={150}
-                height={100}
-              />
-            </div>
-          </div>
-          {/* Navigation */}
-          <nav className="col-span-2 flex items-center justify-center">
-            <NavLinks />
-          </nav>
-          <div id='calendar' className="text-sm ml-4" >Calendar</div>
-          {/* Search and Calendar */}
-          <div className="col-start-1 col-span-4 md:col-start-2 md:col-span-2 px-10">
-            <Suspense fallback={<SearchFallback/>}>
-                <Search placeholder="Search products..." />
-            </Suspense>          
-          </div>
-      </header>
+    <main className='font-red-hat'>
+      <Header />
 
-      <div className="container grid sm:grid-cols-5 sm:gap-4 sm:ml-10">
-        <aside id='filters' className="hidden sm:grid">
+      <div className='container grid sm:grid-cols-5 sm:gap-4 sm:ml-10'>
+        <aside id='filters' className='hidden sm:grid'>
           <Filter />
         </aside>
-       
-       <Products/>
-    
-        <aside className="hidden sm:grid" id='featured'>
-          <Features/>
+
+        <ProductsGrid />
+
+        <aside className='hidden sm:grid' id='featured'>
+          <Features />
         </aside>
       </div>
-      <Footer/>
+      <Footer />
     </main>
   );
 }
