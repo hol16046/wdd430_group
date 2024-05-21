@@ -154,67 +154,67 @@ export const products = [
 export const product_images = [
   {
     productId: 1,
-    imageFile: '../public/product_images/wallet.jpg',
+    imageFile: '/product_images/wallet.jpeg',
     altText: 'A brown leather wallet with a slim profile and a few card slots.',
   },
   {
     productId: 1,
-    imageFile: '../public/product_images/wallet-closeup.jpg',
+    imageFile: '/product_images/wallet-closeup.jpeg',
     altText:
       'Close-up of a brown leather wallet with a slim profile and a few card slots.',
   },
   {
     productId: 1,
-    imageFile: '../public/product_images/wallet-use.jpg',
+    imageFile: '/product_images/wallet-use.jpeg',
     altText: "A compact brown leather wallet in a man's hands.",
   },
   {
     productId: 2,
-    imageFile: '../public/product_images/black-wallet.jpg',
+    imageFile: '/product_images/black-wallet.jpeg',
     altText:
       'A black leather wallet with white stitching on a white background.',
   },
   {
     productId: 3,
-    imageFile: '../public/product_images/blue-wallet.jpg',
+    imageFile: '/product_images/blue-wallet.jpeg',
     altText:
       'A blue leather wallet with brown leather accents on a wooden surface',
   },
   {
     productId: 4,
-    imageFile: '../public/product_images/colorful-striped-handbag.jpg',
+    imageFile: '/product_images/colorful-striped-handbag.jpeg',
     altText: 'A striped handbag using different colors of leather.',
   },
   {
     productId: 5,
-    imageFile: '../public/product_images/colorful-pieced-handbag.jpg',
+    imageFile: '/product_images/colorful-pieced-handbag.jpeg',
     altText: 'A pieced handbag using triangles in different colors of leather.',
   },
   {
     productId: 6,
-    imageFile: '../public/product_images/custom-tag.jpg',
+    imageFile: '/product_images/custom-tag.jpeg',
     altText:
       'A closeup photo of a stamped leather tag with the name "Hope" on it.',
   },
   {
     productId: 7,
-    imageFile: '../public/product_images/floral-embroidery.jpg',
+    imageFile: '/product_images/floral-embroidery.jpeg',
     altText: 'A closeup of blue flowers embroidered on burlap.',
   },
   {
     productId: 8,
-    imageFile: '../public/product_images/rose-cross-stitch.jpg',
+    imageFile: '/product_images/rose-cross-stitch.jpeg',
     altText:
       'A close up of cross-stitched red and pink roses with greenery and other blue flowers.',
   },
   {
     productId: 9,
-    imageFile: '../public/product_images/vanilla-bean-soap.jpg',
+    imageFile: '/product_images/vanilla-bean-soap.jpeg',
     altText: 'White soap wrapped in brown paper on a dark background.',
   },
   {
     productId: 10,
-    imageFile: '../public/product_images/colorful-striped-handbag.jpg',
+    imageFile: '/product_images/colorful-striped-handbag.jpeg',
     altText:
       'Whtie soap with pink accents wrapped in brown paper. Flower petals are scattered on and around the soap. ',
   },
@@ -226,7 +226,7 @@ export const ratings = [
     productId: 1,
     rating: 5,
     review:
-      'This wallet is perfect for my needs. It fits in my pocket and holds everything I need, even a piture of my girl.',
+      'This wallet is perfect for my needs. It fits in my pocket and holds everything I need, even a picture of my girl.',
   },
   {
     userId: 3,

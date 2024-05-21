@@ -249,3 +249,6 @@ main().catch((err) => {
     err
   );
 });
+
+
+// To delete all of a table's information and reset the auto-incrementing primary key, you can use the TRUNCATE command. For example, to delete all rows from the users table and reset the auto-incrementing primary key, you can run the following SQL command: TRUNCATE TABLE table_name RESTART IDENTITY;
