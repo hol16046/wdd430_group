@@ -3,7 +3,8 @@ import Features from './ui/features';
 import ProductsGrid from './ui/products/products-grid';
 import Header from './ui/header/header';
 import Footer from './ui/footer'
-
+import { Suspense } from 'react';
+import { ProductsGridSkeleton } from './ui/skeletons';
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
         <aside id='filters' className='hidden sm:grid'>
         <Filter />
         </aside>
-        <ProductsGrid />
+        <Suspense fallback={<ProductsGridSkeleton /> }>
+          <ProductsGrid />
+        </Suspense>
         <aside className='hidden sm:grid' id='featured'>
           <Features />
         </aside>

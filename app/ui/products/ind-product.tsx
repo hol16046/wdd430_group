@@ -1,22 +1,37 @@
-
+'use client';
 import { fetchProductData, fetchProductImages } from '../../lib/data';
 import { notFound } from  'next/navigation';
 import Image from "next/image"
+import React, { useState, useEffect } from 'react';
+import { SelectProduct, SelectProductImage } from '@/app/lib/definitions';
 
+// Create a Product component skeleton, wrap this in Suspense with skeleton as the fallback. Ref overview page in nextjs dashboard example
 
-export default async function Product({ id }: { id: number }) {
-  
-  const [
-    product, 
-    images, 
-  ] = await Promise.all([
-    fetchProductData(id),
-    fetchProductImages(id),  
-  ]);
-  console.log(images)
+export default function Product({ id }: { id: number }) {
+  const [product,setProduct] = useState<SelectProduct | null>(null);
+  useEffect(() => {
+    async function fetchProduct() {
+      const product = await fetchProductData(id);
+      setProduct(product);
+    }
+    fetchProduct();
+  }, [id]);
+
+  const [images,setImages] = useState<SelectProductImage[] | null>(null);
+  useEffect(() => {
+    async function fetchImages() {
+      const images = await fetchProductImages(id);
+      setImages(images);
+    }
+    fetchImages();
+  }, [id]);
+  console.log (product);
+  console.log(images);
   if (!product) {
     notFound();
-  };
+  } else if (!images) {
+    notFound();
+  }
 
   return (
     <div className="grid grid-cols-3 rounded-lg border-theme-rust border-2 p-3">
