@@ -14,8 +14,9 @@ export default function Footer() {
             </div>
             <div className="m-2 hover:underline">
                 <Link href="" target="_blank" className='btn btn-link'>Contact</Link>
-                <p className="gap-1 text-xs m-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                    Aenean commodo ligula eget dolor.</p>
+                <p className="gap-1 text-xs m-4">402 Wallaby Way</p>
+                <p className="gap-1 text-xs m-4">Sidney, Australia</p>
+                <p className="gap-1 text-xs m-4">867-5309</p>
             </div>
             <div className='grid grid-cols-4 gap-4 mt-8'>
                 <Link href="https://www.facebook.com" target="_blank" className='btn btn-link'>

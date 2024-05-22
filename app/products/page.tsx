@@ -45,7 +45,6 @@ export default async function ProductPage({ params }: { params: { id: number } }
           { label: product.name, href: `/products/${id}`, active: true},
         ]}
       /> */}
-      <Header />
       <LargeProduct 
         product={product} images={images} 
       />
