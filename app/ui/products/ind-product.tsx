@@ -41,6 +41,7 @@ export default async function Product({ id }: { id: number }) {
       </p>
       {/* Render add to cart button */}
       <button
+        value={product.id}
         type="button"
         className="focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5 col-span-2 self-center justify-self-end w-20"
       >
