@@ -1,4 +1,3 @@
-'use client';
 
 import Product from './ind-product';
 import React from 'react';

@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={`${redHat.variable} ${playfair.variable}`}>{children}</body>
-      <Footer />
+      
     </html>
   );
 }

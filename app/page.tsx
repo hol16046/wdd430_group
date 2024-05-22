@@ -2,6 +2,7 @@ import Filter from './ui/filter';
 import Features from './ui/features';
 import ProductsGrid from './ui/products/products-grid';
 import Header from './ui/header/header';
+import Footer from './ui/footer'
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
           <Features />
         </aside>
       </div>
+      <Footer />
     </main>
   );
 }

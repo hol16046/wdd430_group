@@ -1,4 +1,3 @@
-'use client';
 
 import { fetchProductData, fetchProductImages } from '../../lib/data';
 import { notFound } from  'next/navigation';
