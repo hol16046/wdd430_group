@@ -4,7 +4,7 @@ import { notFound } from  'next/navigation';
 import Image from "next/image"
 
 
-export default function Product({ id }: { id: number }) {
+export default async function Product({ id }: { id: number }) {
   
   const [
     product, 
