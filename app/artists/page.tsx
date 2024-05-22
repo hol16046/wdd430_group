@@ -1,5 +1,5 @@
 export default function Page() {
     return (
-        <h1>Buyer Profile Page</h1>
+        <h1>Artists Page</h1>
     )
 }

@@ -4,10 +4,10 @@ export default function Logo() {
   return (
     <div id='logo'>
       <Image
-        src='/logo-transparent.png'
+        src={'/logo-transparent.png'}
         alt='Company Logo'
-        width={150}
-        height={100}
+        width={250}
+        height={200}
       />
     </div>
   );

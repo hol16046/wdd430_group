@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Red_Hat_Display } from "next/font/google";
 import "./globals.css";
+import Footer from "./ui/footer";
 
 const redHat = Red_Hat_Display({ 
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body className={`${redHat.variable} ${playfair.variable}`}>{children}</body>
+      <Footer />
     </html>
   );
 }

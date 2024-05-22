@@ -1,14 +1,16 @@
 import Product from './ind-product';
+import React from 'react';
 
-export default function ProductsGrid() {
+let gridSize = 6
+
+
+export default function ProductsGrid () {
+
   return (
     <section className='mx-auto mb-10 w-[80%] grid gap-4 sm:grid-cols-3 sm:col-span-3'>
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+        {Array.from({ length: gridSize }, (_, index) => (
+          <div key={index + 1}> <Product id={index +1} /> </div>
+        ))};
     </section>
   );
 }
