@@ -214,9 +214,9 @@ export const product_images = [
   },
   {
     productId: 10,
-    imageFile: '/product_images/colorful-striped-handbag.jpeg',
+    imageFile: '/product_images/rose-soap.jpeg',
     altText:
-      'Whtie soap with pink accents wrapped in brown paper. Flower petals are scattered on and around the soap. ',
+      'White soap with pink accents wrapped in brown paper. Flower petals are scattered on and around the soap. ',
   },
 ];
 
