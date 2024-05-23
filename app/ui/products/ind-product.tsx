@@ -2,6 +2,7 @@
 import { fetchProductData, fetchProductImages } from '../../lib/data';
 import { notFound } from  'next/navigation';
 import Image from "next/image"
+import { ProductDetails } from './buttons';
 
 
 export default async function Product({ id }: { id: number }) {
@@ -13,7 +14,7 @@ export default async function Product({ id }: { id: number }) {
     fetchProductData(id),
     fetchProductImages(id),  
   ]);
-  console.log(images)
+  // console.log(images)
   if (!product) {
     notFound();
   };
@@ -39,13 +40,7 @@ export default async function Product({ id }: { id: number }) {
         ${product && product.price} {/* Ensure product is not null before accessing its properties */}
       </p>
       {/* Render add to cart button */}
-      <button
-        value={product.id}
-        type="button"
-        className="focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5 col-span-2 self-center justify-self-end w-20"
-      >
-        Add to Cart
-      </button>
+      <ProductDetails id={product.id} />
     </div>
   );
 }
