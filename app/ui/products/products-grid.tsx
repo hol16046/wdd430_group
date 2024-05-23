@@ -9,9 +9,13 @@ export default function ProductsGrid () {
 
   return (
     <section className='mx-auto mb-10 w-[80%] grid gap-4 sm:grid-cols-3 sm:col-span-3'>
+      
         {Array.from({ length: gridSize }, (_, index) => (
-          <div key={index + 1}> <Product id={index +1} /> </div>
-        ))};
+          <div key={index + 1}> 
+            {/* @ts-expect-error Server Component */}
+            <Product id={index +1} /> 
+          </div>
+        ))}
     </section>
   );
 }
