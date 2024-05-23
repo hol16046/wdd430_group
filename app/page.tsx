@@ -32,7 +32,7 @@ export default function Home() {
           </div>
       </header>
 
-      <div className="container grid grid-cols-5 gap-4 ml-10">
+      <div className="container grid sm:grid-cols-1 lg:grid-cols-5 gap-4 !w-auto lg:w-auto ml-10 mr-10 ">
         <aside id='filters'>
           <Filter />
         </aside>
