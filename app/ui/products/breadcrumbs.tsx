@@ -34,3 +34,13 @@ export default function Breadcrumbs({
     </nav>
   );
 }
+
+
+// Code to incorporate breadcrumbs into a page
+{/* <Breadcrumbs
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Products', href: '/products' },
+          { label: product.name, href: `/products/${id}`, active: true},
+        ]}
+      /> */}
