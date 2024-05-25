@@ -10,7 +10,7 @@ export const FormidableError = formidable.errors.FormidableError;
 export const parseForm = async (
   req: NextApiRequest
 ): Promise<{ fields: formidable.Fields; files: formidable.Files }> => {
-  return new Promise(async (resolve, reject) => {
+  return await new Promise(async (resolve, reject) => {
     const uploadDir = join(
       process.env.ROOT_DIR || process.cwd(),
       `/uploads/${dateFn.format(Date.now(), "dd-MM-Y")}`
@@ -29,8 +29,8 @@ export const parseForm = async (
     }
 
     const form = formidable({
-      maxFiles: 2,
-      maxFileSize: 1024 * 1024, // 1mb
+      maxFiles: 10,
+      maxFileSize: 1024 * 1024 * 10, // 10mb
       uploadDir,
       filename: (_name, _ext, part) => {
         const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;

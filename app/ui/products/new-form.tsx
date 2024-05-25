@@ -41,7 +41,6 @@ export default function Form({ id }: { id: number } ) {
 
   const onCancelFile = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("From onCancelFile");
     if (!previewUrl && !file) {
       return;
     }
@@ -57,7 +56,8 @@ export default function Form({ id }: { id: number } ) {
     }
   
     try {
-      let formData = new FormData();
+      var formData = new FormData();
+      console.log(FormData);
       formData.append("media", file);
   
       const res = await fetch("/api/upload", {
@@ -76,20 +76,20 @@ export default function Form({ id }: { id: number } ) {
       } = await res.json();
   
       if (error || !data) {
-        alert(error || "Sorry! something went wrong.");
+        alert(error || "Sorry! something went wrong with the data.");
         return;
       }
   
-      console.log("File was uploaded successfylly:", data);
+      console.log("File was uploaded successfully:", data);
     } catch (error) {
       console.error(error);
       alert("Sorry! something went wrong.");
     }
-  };\
+  };
 
   return (
     
-    <form action='' className="px-5">
+    <form className="px-5" onSubmit={(e) => e.preventDefault()}>
       {/* Product Name */}
       {/* <div>
         <label htmlFor="name">Product Name</label>
@@ -115,41 +115,41 @@ export default function Form({ id }: { id: number } ) {
               />
             </div>
           ) : (
-        <label className="flex flex-col items-center justify-center flex-grow h-full py-3 transition-colors duration-150 cursor-pointer hover:text-gray-600">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-14 h-14"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-            />
-          </svg>
-          <strong className="text-sm font-medium">Select an image</strong>
-          <input 
-            className="block w-0 h-0" 
-            name="file" 
-            type="file" 
-            onChange={onFileUploadChange} 
-          />
-        </label>
-        )}
+            <label className="flex flex-col items-center justify-center h-full py-3 transition-colors duration-150 cursor-pointer hover:text-gray-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-14 h-14"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                />
+              </svg>
+              <strong className="text-sm font-medium">Select an image</strong>
+              <input
+                className="block w-0 h-0"
+                name="file"
+                type="file"
+                onChange={onFileUploadChange}
+              />
+            </label>
+          )}
         </div>
         <div className="flex mt-4 md:mt-0 md:flex-col justify-center gap-1.5">
           <button
-            disabled={true}
+            disabled={!previewUrl}
             onClick={onCancelFile}
             className="w-1/2 px-4 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gray-700 rounded-sm md:w-auto md:text-base disabled:bg-gray-400 hover:bg-gray-600"
           >
             Cancel file
           </button>
           <button
-            disabled={true}
+            disabled={!previewUrl}
             onClick={onUploadFile}
             className="w-1/2 px-4 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gray-700 rounded-sm md:w-auto md:text-base disabled:bg-gray-400 hover:bg-gray-600"
           >
@@ -158,5 +158,5 @@ export default function Form({ id }: { id: number } ) {
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
