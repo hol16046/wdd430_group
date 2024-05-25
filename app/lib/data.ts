@@ -1,6 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { unstable_noStore as noStore} from 'next/cache';
-import { SelectProduct, SelectProductImage, SelectRating } from '../lib/definitions';
+import { SelectProduct, SelectProductImage, SelectRating, SelectSeller, SelectUser } from '../lib/definitions';
 
 
 export async function fetchProductData(id: number) {
@@ -71,5 +71,82 @@ export async function fetchRatings(id: number) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch the product ratings.');
+  }
+}
+
+export async function fetchSellerData(id: number) {
+  noStore();
+  try {
+    console.log (`Fetching seller ${id} data`);
+
+    const seller_data = await sql<SelectSeller>`
+      SELECT
+        sellers.id,
+        sellers.user_id,
+        sellers.shop_name,
+        sellers.shop_story,
+        sellers.shop_logo,
+        sellers.shop_profile
+      FROM sellers
+      WHERE sellers.user_id = ${id}`;
+
+    const seller = seller_data.rows.map((seller) => ({
+      ...seller,
+    }));
+    //console.log(seller[0]);
+    return seller[0];
+  } catch (error) {
+    throw new Error('Failed to fetch seller data.');
+  }
+}
+
+export async function fetchSellerById(id: number) {
+  noStore();
+  try {
+    console.log (`Checking for seller ${id} data`);
+
+    const seller_data = await sql<SelectSeller>`
+      SELECT
+        sellers.id,
+        sellers.user_id,
+        sellers.shop_name,
+        sellers.shop_story,
+        sellers.shop_logo,
+        sellers.shop_profile
+        FROM sellers
+        WHERE sellers.user_id = ${id}`;
+      
+    const seller = seller_data.rows.map((seller) => ({
+      ...seller,
+    }));
+    //console.log(seller[0]);
+    return seller[0];
+  } catch (error) {
+    throw new Error('Failed to fetch seller data.');
+  }
+}
+
+export async function fetchUserData(id: number) {
+  noStore();
+  try {
+    console.log (`Fetching User ${id} data`);
+
+    const user_data = await sql<SelectUser>`
+      SELECT
+        users.id,
+        users.role,
+        users.f_name,
+        users.l_name,
+        users.email
+      FROM users
+      WHERE users.id = ${id}`;
+
+    const user = user_data.rows.map((user) => ({
+      ...user,
+    }));
+    //console.log(user[0]);
+    return user[0];
+  } catch (error) {
+    throw new Error('Failed to fetch user data.');
   }
 }

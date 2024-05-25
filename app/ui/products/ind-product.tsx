@@ -14,7 +14,7 @@ export default async function Product({ id }: { id: number }) {
     fetchProductData(id),
     fetchProductImages(id),  
   ]);
-  // console.log(images)
+ 
   if (!product) {
     notFound();
   };

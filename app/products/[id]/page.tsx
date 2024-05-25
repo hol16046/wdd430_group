@@ -39,9 +39,9 @@ export default async function ProductPage({
     notFound();
   }
 
-  console.log(product);
-  console.log(images);
-  console.log(ratings);
+  // console.log(product);
+  // console.log(images);
+  // console.log(ratings);
   return (
     <main className='font-red-hat'>
       <Header />

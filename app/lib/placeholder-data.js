@@ -49,22 +49,22 @@ export const sellers = [
     shop_name: "Heather's Handmade",
     shop_story:
       'I love to create beautiful things with my hands. I hope you enjoy my creations as much as I enjoy making them.',
-    shop_logo: '../public/seller_images/handmade-logo.png',
+    shop_logo: '/seller_images/handmade-logo.png',
   },
   {
     user_id: 5,
     shop_name: 'Tiny Stitches Leatherworks',
     shop_story:
       'My ability to get really small means my attention to detail is massive! Take a look at my fine leatherwork products.',
-    shop_logo: '../public/seller_images/ant-logo.png',
-    shop_profile: '../public/seller_images/leather-needle.jpeg',
+    shop_logo: '/seller_images/ant-logo.png',
+    shop_profile: '/seller_images/leather-needle.jpeg',
   },
   {
     user_id: 4,
     shop_name: "Tony's Soapbox",
     shop_story:
       "When I'm not saving the world, I'm making soap. Check out my line of homemade soap products.",
-    shop_logo: '../public/seller_images/soapbox-logo.jpeg',
+    shop_logo: '/seller_images/soapbox-logo.jpeg',
   },
 ];
 
