@@ -8,7 +8,7 @@ let gridSize = 6
 export default function ProductsGrid () {
 
   return (
-    <section className='mx-auto mb-10 w-[80%] grid gap-4 sm:grid-cols-3 sm:col-span-3'>
+    <section className='grid sm:grid-cols-1 mb-10 lg:grid-cols-3 gap-4 col-span-3'>
       
         {Array.from({ length: gridSize }, (_, index) => (
           <div key={index + 1}> 
