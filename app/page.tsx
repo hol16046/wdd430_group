@@ -15,6 +15,7 @@ export default function Home() {
         </aside>
         <ProductsGrid />
         <aside className='hidden sm:grid' id='featured'>
+          {/* @ts-expect-error Server Component */}
           <Features />
         </aside>
       </div>
