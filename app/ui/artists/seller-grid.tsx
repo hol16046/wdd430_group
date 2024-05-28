@@ -17,16 +17,7 @@ async function getSellerGridData() {
   }
   console.log(sellerData, "sellerData")
   const renderedComponents = sellerData
-    
-    .filter(content => content !== undefined)
-    .map((sellerData, index) => (
-      <div key={index + 1}>
-        {/* @ts-expect-error Server Component */}
-        <Seller user_id={sellerData.user_id} />
-      </div>
-    ));
-  
-  return renderedComponents;
+  return sellerData;
 }
 
 export default async function SellerGrid() {
@@ -35,7 +26,13 @@ export default async function SellerGrid() {
 
   return (
     <section className='mx-auto mb-10 w-[80%] grid gap-4 sm:grid-cols-3 sm:col-span-3'>
-      {renderedComponents}
+      {renderedComponents.filter(content => content !== undefined)
+    .map((sellerData, index) => (
+      <div key={index + 1}>
+        {/* @ts-expect-error Server Component */}
+        <Seller user_id={sellerData.user_id} />
+      </div>
+    ))}
     </section>
   );
 }
