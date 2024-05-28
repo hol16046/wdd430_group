@@ -6,7 +6,7 @@ import { SelectProduct, SelectProductImage, SelectRating, SelectSeller, SelectUs
 export async function fetchProductData(id: number) {
   noStore();
   try {
-    console.log ('Fetching product data');
+    // console.log ('Fetching product data');
 
     const product_data = await sql<SelectProduct>`
       SELECT
@@ -22,7 +22,7 @@ export async function fetchProductData(id: number) {
     const product = product_data.rows.map((product) => ({
       ...product,
     }));
-    console.log(product[0]);
+    // console.log(product[0]);
     return product[0];
   } catch (error) {
     throw new Error('Failed to fetch product data.');
@@ -75,7 +75,7 @@ export async function fetchRatings(id: number) {
 }
 
 export async function fetchSellerData(id: number) {
-  noStore();
+  // noStore();
   try {
     console.log (`Fetching seller ${id} data`);
 
