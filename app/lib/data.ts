@@ -75,7 +75,7 @@ export async function fetchRatings(id: number) {
 }
 
 export async function fetchSellerData(id: number) {
-  noStore();
+  // noStore();
   try {
     console.log (`Fetching seller ${id} data`);
 
