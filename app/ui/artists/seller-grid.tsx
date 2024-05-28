@@ -4,8 +4,7 @@ import React from 'react';
 
 let gridSize = 6
 
-
-export default async function SellerGrid() {
+async function getSellerGridData() {
   const sellerData = [];
   for (let i = 1; i <= gridSize; i++) {
     try {
@@ -17,7 +16,7 @@ export default async function SellerGrid() {
     }
   }
   console.log(sellerData, "sellerData")
-  const renderedComponents = await sellerData
+  const renderedComponents = sellerData
     
     .filter(content => content !== undefined)
     .map((sellerData, index) => (
@@ -26,6 +25,13 @@ export default async function SellerGrid() {
         <Seller user_id={sellerData.user_id} />
       </div>
     ));
+  
+  return renderedComponents;
+}
+
+export default async function SellerGrid() {
+  
+  const renderedComponents = await getSellerGridData();
 
   return (
     <section className='mx-auto mb-10 w-[80%] grid gap-4 sm:grid-cols-3 sm:col-span-3'>
