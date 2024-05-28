@@ -17,7 +17,7 @@ export default async function SellerGrid() {
     }
   }
   console.log(sellerData, "sellerData")
-  const renderedComponents = sellerData
+  const renderedComponents = await sellerData
     
     .filter(content => content !== undefined)
     .map((sellerData, index) => (
