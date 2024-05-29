@@ -51,11 +51,11 @@ export async function authenticate(
     message?: string | null;
   };
 
-  export async function addProductImage(prevState: ProductImageState, formData: FormData) {
+  export async function addProductImage(productId: number, imageFile: string, altText: string) {
     const validatedFields = AddProductImage.safeParse({
-      product_id: formData.get('product_id'),
-      imageFile: formData.get('image_file'),
-      altText: formData.get('alt_text'),
+      product_id: productId,
+      image_file: imageFile,
+      alt_text: altText,
     });
 
     console.log(validatedFields);
