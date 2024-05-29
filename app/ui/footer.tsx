@@ -10,7 +10,7 @@ export default function Footer() {
                 <Image src={"/logo.webp"} width={200} height={200} alt="hand crafted haven logo"/>
             </div>
             <div className="mt-2 hover:underline">
-                <Link href="/about" className='btn btn-link'>About</Link>
+                <Link href="/about" className='btn btn-link'>About Us</Link>
             </div>
             <div className="m-2 hover:underline">
                 <Link href="mailto:handcraftedhaven@test.com" className='btn btn-link'>Contact Us
