@@ -40,6 +40,7 @@ export default async function Product({ id }: { id: number }) {
         ${product && product.price} {/* Ensure product is not null before accessing its properties */}
       </p>
       {/* Render add to cart button */}
+      <br></br>
       <ProductDetails id={product.id} />
     </div>
   );
