@@ -15,7 +15,6 @@ async function getSellerGridData() {
       sellerData.push(null);
     }
   }
-  console.log(sellerData, "sellerData")
   return sellerData;
 }
 
