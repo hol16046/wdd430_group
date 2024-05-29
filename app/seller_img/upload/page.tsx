@@ -4,12 +4,12 @@ import { type PutBlobResult } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
 import { useState, useRef } from 'react';
  
-export default function AvatarUploadPage() {
+export default function SellerImageUploadPage() {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   return (
-    <>
-      <h1>Upload Your Avatar</h1>
+    <main className="font-red-hat">
+      <h1>Upload New Seller Shop Image</h1>
  
       <form
         onSubmit={async (event) => {
@@ -37,6 +37,6 @@ export default function AvatarUploadPage() {
           Blob url: <a href={blob.url}>{blob.url}</a>
         </div>
       )}
-    </>
+    </main>
   );
 }

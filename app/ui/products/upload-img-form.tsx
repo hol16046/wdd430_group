@@ -1,6 +1,6 @@
 import { put } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
-
+ 
 export async function Form() {
   async function uploadImage(formData: FormData) {
     'use server';
@@ -11,11 +11,11 @@ export async function Form() {
     revalidatePath('/');
     return blob;
   }
-
+ 
   return (
     <form action={uploadImage}>
-      <label htmlFor='image'>Image</label>
-      <input type='file' id='image' name='image' required />
+      <label htmlFor="image">Image</label>
+      <input type="file" id="image" name="image" required />
       <button>Upload</button>
     </form>
   );

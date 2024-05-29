@@ -4,11 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'OBN4BxFMc3wjm5TO.public.blob.vercel-storage.com',
+        hostname: 'obn4bxfmc3wjm5to.public.blob.vercel-storage.com',
         port: '',
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

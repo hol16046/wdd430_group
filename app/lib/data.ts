@@ -150,3 +150,24 @@ export async function fetchUserData(id: number) {
     throw new Error('Failed to fetch user data.');
   }
 }
+
+export async function fetchAllProducts() {
+  noStore();
+  try {
+    const data = await sql<SelectProduct>`
+      SELECT
+        products.id,
+        products.seller_id,
+        products.name,
+        products.description,
+        products.price,
+        products.stock
+      FROM products`;
+
+    const products = data.rows;
+    return products;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all products.');
+  }
+}
