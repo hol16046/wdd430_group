@@ -4,6 +4,7 @@ import {
   BuildingStorefrontIcon,
   MapIcon,
   ShoppingCartIcon,
+  UserGroupIcon,
   UserIcon
 
 } from '@heroicons/react/24/outline';
@@ -17,6 +18,7 @@ const links = [
   { name: 'Home', href: '/', icon: BuildingStorefrontIcon },
   { name: 'Explore', href: '/explore', icon: MapIcon },
   { name: 'Cart', href: '/shopping-cart', icon: ShoppingCartIcon },
+  { name: 'Artists', href: '/artists', icon: UserGroupIcon},
   { name: 'Profile', href: '/profile', icon: UserIcon },
 ];
 
@@ -27,6 +29,7 @@ export default function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
+          <>
           <Link
             key={link.name}
             href={link.href}
@@ -40,6 +43,7 @@ export default function NavLinks() {
             <LinkIcon className="w-5" />
             <p className="hidden md:block">{link.name}</p>
           </Link>
+          </>
         );
       })}
     </div>

@@ -17,17 +17,12 @@ export const metadata: Metadata = {
   }) {
     const id = params.artistId;
     const user_id = params.artistId;
-    console.log(params, "params seller id from click");
   
     // Fetch user and seller data
     const [user, seller] = await Promise.all([
       fetchUserData(id),
       fetchSellerData(user_id),
     ]);
-  
-    // Check if user data is fetched successfully
-    console.log(user, "user data");
-    console.log(seller, "seller data");
   
     //Handle the case when user data is not found
     if (!user) {
