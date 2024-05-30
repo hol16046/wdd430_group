@@ -42,3 +42,9 @@ border: solid 2px #333;
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .form-btn {
+    @apply focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5;
+  }
+}

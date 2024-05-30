@@ -10,11 +10,10 @@ export default function AvatarUploadPage({products}: {products: SelectProduct[]}
   const altText = useRef<HTMLTextAreaElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   return (
-    <div className='grid grid-cols-1 gap-2 p-2 mx-auto md:max-w-[80%]'>
-      <h1 className="font-playfair text-xl self-center justify-self-center">Upload A New Product Image</h1>
+    <>
+      <h1>Upload Your Avatar</h1>
  
       <form
-        className=' grid grid-cols-5 auto-rows-auto justify-self-center gap-1'
         onSubmit={async (event) => {
           event.preventDefault();
  
@@ -33,15 +32,19 @@ export default function AvatarUploadPage({products}: {products: SelectProduct[]}
               body: file,
             },
           );
- 
-          const newBlob = (await response.json()) as PutBlobResult;
- 
-          setBlob(newBlob);
+          
+          if (response.status === 201) {
+            alert('Product added successfully');
+          }
+
+          if (!response.ok) {
+            throw new Error('Failed to upload image');
+          }
         }}
       >
-        <input name="file" ref={inputFileRef} type="file" className='ml-2.5 sm:ml-3 md:ml-5 lg:ml-6 file:focus:outline-none file:text-white file:bg-theme-dark-teal file:hover:bg-theme-rust file:focus:ring-4 file:focus:ring-theme-orange file:font-medium file:rounded-md file:text-sm file:px-2.5 file:py-2.5 col-span-2 justify-self-start self-center' required />
-        <p className="text-sm col-span-5 justify-self-center">Maximum file size: 4.5 MB</p>
-        
+        <h2 className="font-playfair col-span-5 self-center text-lg">Step 1:</h2>
+         <input name="file" ref={inputFileRef} type="file" className='file:focus:outline-none file:text-white file:bg-theme-dark-teal file:hover:bg-theme-rust file:focus:ring-4 file:focus:ring-theme-orange file:font-medium file:rounded-md file:text-sm file:px-2.5 file:py-2.5 col-span-2 justify-self-start self-center' required />
+        <h2 className="font-playfair col-span-5 self-center text-lg">Step 2:</h2>
          <label htmlFor="product" className="sr-only">
            Product
          </label>
@@ -52,7 +55,7 @@ export default function AvatarUploadPage({products}: {products: SelectProduct[]}
           defaultValue=''
           aria-describedby="product-error"
         >
-          <option value="" className="text-gray-600" disabled>
+          <option value="" className='text-gray-500' disabled>
             Select a product
           </option>
           {products.map((product) => (
@@ -61,14 +64,14 @@ export default function AvatarUploadPage({products}: {products: SelectProduct[]}
             </option>
           ))}
         </select>
-        <textarea name="alt_text" key='alt_text' ref={altText}placeholder="Please enter an image description" className="w-[95%] col-span-5 border-2 border-theme-rust justify-self-center rounded-md p-1 text-sm placeholder:font-red-hat placeholder:text-gray-600"></textarea>
-        <button type="submit" className='mr-2.5 sm:mr-3 md:mr-5 lg:mr-6 form-btn col-start-5 row-end-7 self-center justify-self-end'>Upload</button>
+        <textarea name="alt_text" key='alt_text' ref={altText}placeholder="Please enter an image description" className="w-[95%] col-span-5 border-2 border-theme-rust justify-self-center rounded-md p-1 text-sm placeholder:font-red-hat"></textarea>
+        <button type="submit" className='focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5 col-start-5 row-end-7 self-center justify-self-end'>Upload</button>
       </form>
       {blob && (
-        <div className="justify-self-center text-theme-rust font-semibold text-2xl">
-          <p>Image uploaded successfully!</p>
+        <div>
+          Blob url: <a href={blob.url}>{blob.url}</a>
         </div>
       )}
-    </div>
+    </>
   );
 }

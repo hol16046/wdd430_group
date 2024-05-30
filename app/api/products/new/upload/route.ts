@@ -1,4 +1,4 @@
-import { put } from '@vercel/blob';
+
 import { NextResponse } from 'next/server';
 import { addProductImage } from '@/app/lib/action';
  
@@ -25,24 +25,19 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
   
 
-
-  const blob = await put(filename, request.body, {
-    access: 'public',
-  });
-
-  const image_file = blob.url;
-
-  if (!image_file || !alt_text || !productId) {
+  if (!filename || !alt_text || !productId) {
     throw new Error('Missing fields');
   }
   try {
-    await addProductImage(productId, image_file, alt_text);
+    await addProductImage(productId, filename, alt_text);
   } catch (error) {
     throw new Error('Could not update product image');
   }
 
  
-  return NextResponse.json(blob);
+  return NextResponse.json({ }, {
+    status: 201,
+  })
 }
 
 
