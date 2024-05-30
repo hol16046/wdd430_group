@@ -29,3 +29,12 @@ export type SelectKeyword = typeof keywords.$inferSelect;
 export type InsertKeyword = typeof keywords.$inferInsert;
 export type SelectProductKeyword = typeof product_keywords.$inferSelect;
 export type InsertProductKeyword = typeof product_keywords.$inferInsert;
+
+export type ProductForm = {
+  id: number;
+  seller_id: number;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+}

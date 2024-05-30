@@ -114,7 +114,7 @@ export async function fetchSellerById(id: number) {
         sellers.shop_logo,
         sellers.shop_profile
         FROM sellers
-        WHERE sellers.user_id = ${id}`;
+        WHERE sellers.id = ${id}`;
       
     const seller = seller_data.rows.map((seller) => ({
       ...seller,

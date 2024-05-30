@@ -1,27 +1,21 @@
-
- 
-import { type PutBlobResult } from '@vercel/blob';
-import { upload } from '@vercel/blob/client';
-import { useState, useRef } from 'react';
-import { fetchAllProducts } from '@/app/lib/data';
+import { fetchSellerById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
-import ImageUploadForm from '@/app/ui/products/add-new-img-form';
+import NewProductForm from '@/app/ui/products/add-new-product-form';
 import Header from '@/app/ui/header/header';
 import Footer from '@/app/ui/footer';
-import { SelectProduct } from '@/app/lib/definitions';
-import { Form } from '@/app/ui/products/upload-img-form';
+import { SelectSeller } from '@/app/lib/definitions';
  
 export default async function NewProductImageUploadPage() {
-  const products: SelectProduct[] = await fetchAllProducts();
+  const seller: SelectSeller = await fetchSellerById(2);
 
-  if (!products) {
+  if (!seller) {
     notFound();
   }
 
   return (
     <main className="font-red-hat">
       <Header />
-      <ImageUploadForm products={products} />
+      <NewProductForm seller={seller} />
       <Footer />
     </main>
   )

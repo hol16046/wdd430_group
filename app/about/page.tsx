@@ -24,18 +24,18 @@ export default function AboutUs() {
       <div className="mt-8">
         <h3 className="text-2xl font-bold mb-4">Our Collection</h3>
         <p className="text-lg mb-4">
-          Each item in our collection tells a story, crafted with love, skill, and attention to detail. From intricately woven textiles to delicately sculpted ceramics, every piece reflects the unique style and vision of the artist behind it. Whether you&apos;re searching for a one-of-a-kind piece of jewelry, a beautifully hand-painted artwork, or a functional yet artistic home decor item, our carefully curated selection offers something special for every taste and occasion.
+          Each item in our collection tells a story, crafted with love, skill, and attention to detail. From intricately woven textiles to delicately sculpted ceramics, every piece reflects the unique style and vision of the artist behind it. Whether you&#39;re searching for a one-of-a-kind piece of jewelry, a beautifully hand-painted artwork, or a functional yet artistic home decor item, our carefully curated selection offers something special for every taste and occasion.
         </p>
         <h3 className="text-2xl font-bold mb-4">Supporting Local Artists</h3>
         <p className="text-lg mb-4">
-          At Hand Crafted Haven, we believe in the power of community and the importance of supporting local talent. By championing the work of local artists and artisans, we not only showcase their incredible skill and creativity but also contribute to the growth and sustainability of our local creative economy. With each purchase, you&apos;re not just acquiring a beautiful handcrafted item - you&apos;re investing in the livelihoods and dreams of talented individuals in our community.
+          At Hand Crafted Haven, we believe in the power of community and the importance of supporting local talent. By championing the work of local artists and artisans, we not only showcase their incredible skill and creativity but also contribute to the growth and sustainability of our local creative economy. With each purchase, you&#39;re not just acquiring a beautiful handcrafted item - you&#39;re investing in the livelihoods and dreams of talented individuals in our community.
         </p>
         <h3 className="text-2xl font-bold mb-4">Join Us</h3>
         <p className="text-lg mb-4">
-          Whether you&apos;re a passionate artist looking to share your creations with the world or a discerning shopper seeking unique and meaningful treasures, we invite you to join us on our journey. Explore our ever-evolving collection, connect with the stories behind each piece, and discover the magic of handmade at Hand Crafted Haven.
+          Whether you&#39;re a passionate artist looking to share your creations with the world or a discerning shopper seeking unique and meaningful treasures, we invite you to join us on our journey. Explore our ever-evolving collection, connect with the stories behind each piece, and discover the magic of handmade at Hand Crafted Haven.
         </p>
         <p className="text-lg">
-          Thank you for supporting local artisans and embracing the beauty of handmade craftsmanship with us. Together, let&apos;s celebrate the art of creation and spread joy through Hand Crafted Haven. Welcome to Hand Crafted Haven - where every piece has a story, and every purchase makes a difference.
+          Thank you for supporting local artisans and embracing the beauty of handmade craftsmanship with us. Together, let&#39;s celebrate the art of creation and spread joy through Hand Crafted Haven. Welcome to Hand Crafted Haven - where every piece has a story, and every purchase makes a difference.
         </p>
       </div>
     </div>
