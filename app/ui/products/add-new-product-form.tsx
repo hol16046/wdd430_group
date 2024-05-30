@@ -6,7 +6,7 @@ import { useFormState } from 'react-dom';
 import { SelectSeller } from '@/app/lib/definitions';
 
 export default function NewProductForm({ seller }: { seller: SelectSeller }) {
-  const initialState = { key: '', message: '', errors: {} };
+  const initialState = { key: '', message: '', errors: undefined };
   const addProductWithSellerId = addProduct.bind(null, seller.id);
   const [state, dispatch] = useFormState(addProductWithSellerId, initialState);
   // const sellerId = seller.id;
