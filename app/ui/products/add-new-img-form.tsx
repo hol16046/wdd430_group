@@ -4,7 +4,7 @@ import type { PutBlobResult } from '@vercel/blob';
 import { useState, useRef } from 'react';
 import { SelectProduct } from '@/app/lib/definitions';
  
-export default function AvatarUploadPage({products}: {products: SelectProduct[]}) {
+export default function ImageUploadForm({products}: {products: SelectProduct[]}) {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const productId = useRef<HTMLOptionElement>(null);
   const altText = useRef<HTMLTextAreaElement>(null);
