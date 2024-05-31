@@ -5,7 +5,7 @@ import Header from '@/app/ui/header/header';
 import Footer from '@/app/ui/footer';
 import { SelectSeller } from '@/app/lib/definitions';
  
-export default async function NewProductImageUploadPage() {
+export default async function AddNewProductPage() {
   const seller: SelectSeller = await fetchSellerById(2);
 
   if (!seller) {

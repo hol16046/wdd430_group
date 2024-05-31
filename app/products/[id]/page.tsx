@@ -2,6 +2,7 @@
 import Header from '../../ui/header/header';
 import { Suspense } from 'react';
 import LargeProduct from '../../ui/products/large-product';
+import { DeleteProduct } from '@/app/ui/products/buttons';
 import Ratings from '../../ui/ratings';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -17,6 +18,7 @@ import {
   SelectProductImage,
   SelectRating,
 } from '../../lib/definitions';
+import Footer from '@/app/ui/footer';
 
 //How can we show the product name as the title of the page?
 export const metadata: Metadata = {
@@ -47,6 +49,9 @@ export default async function ProductPage({
       <Header />
       <LargeProduct product={product} images={images} />
       <Ratings ratings={ratings} />
+      {/* Show the Delete Product option only if seller is logged in and the product belongs to the seller */}
+      {/* <DeleteProduct product={product} /> */}
+      <Footer />
     </main>
   );
 }

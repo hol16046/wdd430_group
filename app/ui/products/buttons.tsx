@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { deleteProduct } from '../../lib/action';
+import { SelectProduct } from '../../lib/definitions';
 
 export function ProductDetails({ id }: { id: number }) {
   return (
@@ -10,5 +12,16 @@ export function ProductDetails({ id }: { id: number }) {
         View Details
       </button>
     </Link>    
+  );
+}
+
+export function DeleteProduct({ product }: { product: SelectProduct }) {
+  const deleteProductWithId = deleteProduct.bind(null, product.id);
+  return (
+    <form action={deleteProductWithId}>
+      <button className="form-btn">
+        Delete Product
+      </button>
+    </form>
   );
 }
