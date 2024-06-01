@@ -1,4 +1,3 @@
-// Code: ProductPage component
 import Header from '../../ui/header/header';
 import { Suspense } from 'react';
 import LargeProduct from '../../ui/products/large-product';
@@ -11,14 +10,12 @@ import {
   fetchRatings,
 } from '../../lib/data';
 import Breadcrumbs from '../../ui/products/breadcrumbs';
-import { compareSync } from 'bcrypt';
 import {
   SelectProduct,
   SelectProductImage,
   SelectRating,
 } from '../../lib/definitions';
 
-//How can we show the product name as the title of the page?
 export const metadata: Metadata = {
   title: 'Product Page',
 };
@@ -39,14 +36,11 @@ export default async function ProductPage({
     notFound();
   }
 
-  // console.log(product);
-  // console.log(images);
-  // console.log(ratings);
   return (
     <main className='font-red-hat'>
       <Header />
       <LargeProduct product={product} images={images} />
-      <Ratings ratings={ratings} />
+      <Ratings ratings={ratings} productId={id} />
     </main>
   );
 }
