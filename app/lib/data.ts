@@ -1,12 +1,11 @@
 import { sql } from '@vercel/postgres';
-import { unstable_noStore as noStore} from 'next/cache';
+import { unstable_noStore as noStore } from 'next/cache';
 import { SelectProduct, SelectProductImage, SelectRating, SelectSeller, SelectUser } from '../lib/definitions';
-
 
 export async function fetchProductData(id: number) {
   noStore();
   try {
-    // console.log ('Fetching product data');
+    console.log('Fetching product data');
 
     const product_data = await sql<SelectProduct>`
       SELECT
@@ -22,7 +21,7 @@ export async function fetchProductData(id: number) {
     const product = product_data.rows.map((product) => ({
       ...product,
     }));
-    // console.log(product[0]);
+    console.log(product[0]);
     return product[0];
   } catch (error) {
     throw new Error('Failed to fetch product data.');
@@ -75,9 +74,9 @@ export async function fetchRatings(id: number) {
 }
 
 export async function fetchSellerData(id: number) {
-  // noStore();
+  noStore();
   try {
-    console.log (`Fetching seller ${id} data`);
+    console.log(`Fetching seller ${id} data`);
 
     const seller_data = await sql<SelectSeller>`
       SELECT
@@ -93,7 +92,6 @@ export async function fetchSellerData(id: number) {
     const seller = seller_data.rows.map((seller) => ({
       ...seller,
     }));
-    //console.log(seller[0]);
     return seller[0];
   } catch (error) {
     throw new Error('Failed to fetch seller data.');
@@ -103,7 +101,7 @@ export async function fetchSellerData(id: number) {
 export async function fetchSellerById(id: number) {
   noStore();
   try {
-    console.log (`Checking for seller ${id} data`);
+    console.log(`Checking for seller ${id} data`);
 
     const seller_data = await sql<SelectSeller>`
       SELECT
@@ -113,13 +111,12 @@ export async function fetchSellerById(id: number) {
         sellers.shop_story,
         sellers.shop_logo,
         sellers.shop_profile
-        FROM sellers
-        WHERE sellers.id = ${id}`;
-      
+      FROM sellers
+      WHERE sellers.user_id = ${id}`;
+
     const seller = seller_data.rows.map((seller) => ({
       ...seller,
     }));
-    //console.log(seller[0]);
     return seller[0];
   } catch (error) {
     throw new Error('Failed to fetch seller data.');
@@ -129,7 +126,7 @@ export async function fetchSellerById(id: number) {
 export async function fetchUserData(id: number) {
   noStore();
   try {
-    console.log (`Fetching User ${id} data`);
+    console.log(`Fetching User ${id} data`);
 
     const user_data = await sql<SelectUser>`
       SELECT
@@ -144,30 +141,8 @@ export async function fetchUserData(id: number) {
     const user = user_data.rows.map((user) => ({
       ...user,
     }));
-    //console.log(user[0]);
     return user[0];
   } catch (error) {
     throw new Error('Failed to fetch user data.');
-  }
-}
-
-export async function fetchAllProducts() {
-  noStore();
-  try {
-    const data = await sql<SelectProduct>`
-      SELECT
-        products.id,
-        products.seller_id,
-        products.name,
-        products.description,
-        products.price,
-        products.stock
-      FROM products`;
-
-    const products = data.rows;
-    return products;
-  } catch (err) {
-    console.error('Database Error:', err);
-    throw new Error('Failed to fetch all products.');
   }
 }
