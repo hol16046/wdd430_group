@@ -74,7 +74,7 @@ export async function fetchRatings(id: number) {
 }
 
 export async function fetchSellerData(id: number) {
-  noStore();
+  //noStore();
   try {
     console.log(`Fetching seller ${id} data`);
 
@@ -99,7 +99,7 @@ export async function fetchSellerData(id: number) {
 }
 
 export async function fetchSellerById(id: number) {
-  noStore();
+  //noStore();
   try {
     console.log(`Checking for seller ${id} data`);
 
