@@ -13,7 +13,7 @@ import Breadcrumbs from '../../ui/products/breadcrumbs';
 import { compareSync } from 'bcrypt';
 import Footer from '@/app/ui/footer';
 
-//How can we show the product name as the title of the page?
+
 export async function generateMetadata({ params }: { params: { id: number } }) {
   const product = await fetchProductData(params.id);
   return {

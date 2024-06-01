@@ -8,24 +8,13 @@ import Ratings from '../ui/ratings';
 import Footer from '../ui/footer';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import {
-  fetchProductData,
-  fetchProductImages,
-  fetchRatings,
-} from '../lib/data';
-import { DeleteProduct } from '../ui/products/buttons';
-import Breadcrumbs from '../ui/products/breadcrumbs';
-import { compareSync } from 'bcrypt';
-import {
-  SelectProduct,
-  SelectProductImage,
-  SelectRating,
-} from '../lib/definitions';
 import Message from '../ui/products/message';
+import dynamic from 'next/dynamic';
 
-//How can we show the product name as the title of the page?
+const DynamicDeletedMessage = dynamic(() => import('../ui/products/message'), {
+  ssr: false,
+});
+
 export const metadata: Metadata = {
   title: 'Product Page',
 };
@@ -38,7 +27,7 @@ export default async function DeletedProductPage() {
     <main className='font-red-hat'>
       <Header />
       <div className="grid">
-        <Message />
+        <DynamicDeletedMessage />
       </div>
       <ProductsGrid />
       <Footer />
