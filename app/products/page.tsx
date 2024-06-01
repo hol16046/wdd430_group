@@ -8,6 +8,7 @@ import Ratings from '../ui/ratings';
 import Footer from '../ui/footer';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import {
   fetchProductData,
@@ -28,6 +29,8 @@ import Message from '../ui/products/message';
 export const metadata: Metadata = {
   title: 'Product Page',
 };
+
+
 
 export default async function DeletedProductPage() {
 

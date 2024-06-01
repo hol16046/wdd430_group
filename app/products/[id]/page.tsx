@@ -1,11 +1,9 @@
 // Code: ProductPage component
 import Header from '../../ui/header/header';
-import { Suspense } from 'react';
 import LargeProduct from '../../ui/products/large-product';
 import { DeleteProduct } from '@/app/ui/products/buttons';
 import Ratings from '../../ui/ratings';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 import {
   fetchProductData,
   fetchProductImages,
@@ -13,17 +11,15 @@ import {
 } from '../../lib/data';
 import Breadcrumbs from '../../ui/products/breadcrumbs';
 import { compareSync } from 'bcrypt';
-import {
-  SelectProduct,
-  SelectProductImage,
-  SelectRating,
-} from '../../lib/definitions';
 import Footer from '@/app/ui/footer';
 
 //How can we show the product name as the title of the page?
-export const metadata: Metadata = {
-  title: 'Product Page',
-};
+export async function generateMetadata({ params }: { params: { id: number } }) {
+  const product = await fetchProductData(params.id);
+  return {
+    title: `${product.name} Details`,
+  };
+}
 
 export default async function ProductPage({
   params,

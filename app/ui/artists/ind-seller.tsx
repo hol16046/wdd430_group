@@ -1,13 +1,12 @@
-import { fetchSellerById } from '../../lib/data';
+import { fetchSellerData } from '../../lib/data';
 import Image from "next/image"
 import { SellerDetails } from './buttons';
-
 
 export default async function Seller({ user_id }: { user_id: number }) {
  
   const [ seller ] = await Promise.all([
     
-    fetchSellerById(user_id) 
+    fetchSellerData(user_id) 
   ]);
 
   if (!seller ) {

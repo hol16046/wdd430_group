@@ -77,7 +77,7 @@ export async function fetchRatings(id: number) {
 export async function fetchSellerData(id: number) {
   // noStore();
   try {
-    console.log (`Fetching seller ${id} data`);
+    console.log (`Fetching seller user_${id} data`);
 
     const seller_data = await sql<SelectSeller>`
       SELECT
