@@ -1,4 +1,4 @@
-import { fetchSellerById } from '../../lib/data';
+import { fetchSellerData } from '../../lib/data';
 import Image from "next/image"
 import { SellerDetails } from './buttons';
 
