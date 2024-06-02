@@ -18,7 +18,7 @@ export async function generateMetadata(
   // read route params
   const id = params.artistId
   // fetch product data
-  const seller = await fetchSellerById(id)
+  const seller = await fetchSellerData(id)
   return {
     title: seller.shop_name,
     description: seller.shop_story,
