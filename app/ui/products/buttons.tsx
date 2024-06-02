@@ -15,7 +15,7 @@ export function ProductDetails({ id }: { id: number }) {
       href={`/products/${id}`} passHref legacyBehavior> 
       <button
         type="button"
-        className="focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5 col-span-2 self-center justify-self-end">
+        className="form-btn col-span-2 self-center justify-self-end">
         View Details
       </button>
     </Link>    
@@ -28,11 +28,11 @@ export function AddToCart({ product, addToCart }: AddToCartProps) {
   };
 
   return (
-      <Link href="/shopping-cart" passHref>
+      <Link href="/shopping-cart" passHref className='col-span-2 self-center justify-self-end'>
           <button
               type="button"
               onClick={handleAddToCart}
-              className="focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5 col-span-2 self-center justify-self-end">
+              className="form-btn col-span-2 self-center justify-self-end">
               Add to Cart
           </button>
       </Link>
