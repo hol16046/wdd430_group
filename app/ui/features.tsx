@@ -23,6 +23,8 @@ export default async function Features(){
         notFound();
       };
 
+    const alt = seller.shop_name + ' logo';
+
     return(
         <>
         <div className="grid-wrap rounded-lg border-4 p-4">
@@ -32,8 +34,8 @@ export default async function Features(){
                 src={seller.shop_logo}
                 width={200}
                 height={150}
-                className="hidden md:block"
-                alt={seller.shop_name}
+                className="hidden md:block rounded-md"
+                alt={alt}
                 />
                 <h4>{seller.shop_name}</h4>
             </div>
@@ -45,8 +47,8 @@ export default async function Features(){
                 src={images[0].image_file}
                 width={200}
                 height={150}
-                className="hidden md:block"
-                alt={product.name}
+                className="hidden md:block rounded-md"
+                alt={images[0].alt_text}
                 />
                 <h4>{product.name}</h4>
             </div>
