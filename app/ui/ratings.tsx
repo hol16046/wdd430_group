@@ -1,5 +1,5 @@
 import { SelectRating } from '../lib/definitions';
-import CreateRatingButton from '../reviews/CreateRatingButton';
+import CreateRatingButton from './reviews/CreateRatingButton';
 
 export default function Ratings({ ratings }: { ratings: SelectRating[] }) {
   // Helper function to render stars
