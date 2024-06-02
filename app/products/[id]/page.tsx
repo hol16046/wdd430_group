@@ -67,10 +67,12 @@ export default async function ProductPage({
   return (
     <main className='font-red-hat'>
       <Header />
-      <div className='grid sm:max-w-[80%] sm:mx-auto'>
+      <div className='grid sm:w-[80%] md:w-[80%] sm:mx-auto'>
         <LargeProduct product={product} images={images} />
-        <Ratings ratings={ratings} productId={id}/>
-          <div className='grid grid-cols-2'>
+        <div className='px-3'>
+          <Ratings ratings={ratings} productId={id}/>
+        </div>
+        <div className='grid grid-cols-2'>
           {/* Show the Edit Product option only if seller is logged in and the product belongs to the seller */}
           <EditProduct id={id} />
           {/* Show the Delete Product option only if seller is logged in and the product belongs to the seller */}

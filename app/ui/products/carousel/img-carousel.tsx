@@ -21,9 +21,9 @@ export default function ImgCarousel({ images }: { images: SelectProductImage[] }
   }
 
   return(
-    <div aria-label='Image Carousel' className='w-full h-full relative mb-2 '>
+    <div aria-label='Image Carousel' className='w-full h-full relative block mb-2 '>
       <a href='#after-carousel-controls' className='sr-only focus:not-sr-only'>Skip to after image carousel controls</a>
-      <div className='w-full h-full overflow-hidden flex'>
+      <div className='w-full h-full overflow-hidden flex rounded-md'>
         {images.map((image, index) => (
           <Image style={{ translate: `${-100 * imageIndex}%`}} key={image.image_file} src={image.image_file} alt={image.alt_text} aria-hidden={imageIndex !== index} width={350} height={250} className='w-full h-full object-cover block flex-shrink-0 flex-grow-0 translate ease-in-out duration-300'/>
         ))}

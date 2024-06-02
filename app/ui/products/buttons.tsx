@@ -28,7 +28,7 @@ export function AddToCart({ product, addToCart }: AddToCartProps) {
   };
 
   return (
-      <Link href="/shopping-cart" passHref className='col-span-2 self-center justify-self-end'>
+      <Link href="/shopping-cart" passHref className='col-end-4 self-center justify-self-end sm:justify-self-center'>
           <button
               type="button"
               onClick={handleAddToCart}
@@ -42,8 +42,15 @@ export function AddToCart({ product, addToCart }: AddToCartProps) {
 export function DeleteProduct({ product }: { product: SelectProduct }) {
   const deleteProductWithId = deleteProduct.bind(null, product.id);
   return (
-    <form action={deleteProductWithId} className='grid mb-3 sm:mx-auto pr-3 w-full'>
-      <button className="form-btn justify-self-end self-center col-span 1 md:justify-self-center">
+    <form 
+      onSubmit={(e) => {
+      if (!window.confirm('Warning: This Cannot Be Undone! Do you really want to delete this product?')) {
+          e.preventDefault();
+        }
+      }}
+      action={deleteProductWithId} 
+      className='grid mb-3 sm:mx-auto pr-3 w-full'>
+      <button type='submit' className="form-btn justify-self-end self-center col-span 1 md:justify-self-center">
         Delete Product
       </button>
     </form>
