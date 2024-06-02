@@ -74,7 +74,7 @@ export default async function ProductPage({
     <main className='font-red-hat'>
       <Header />
       <LargeProduct product={product} images={images} />
-      <Ratings ratings={ratings} />
+      <Ratings ratings={[]} productId={0}  />
       <Footer />
     </main>
   
