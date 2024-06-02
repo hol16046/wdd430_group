@@ -78,7 +78,7 @@ export async function fetchRatings(id: number) {
 export async function fetchSellerData(id: number) {
   // noStore();
   try {
-    console.log (`Fetching seller ${id} data`);
+    // console.log (`Fetching seller ${id} data`);
 
     const seller_data = await sql<SelectSeller>`
       SELECT
@@ -102,9 +102,9 @@ export async function fetchSellerData(id: number) {
 }
 
 export async function fetchSellerById(id: number) {
-  noStore();
+  // noStore();
   try {
-    console.log (`Checking for seller ${id} data`);
+    // console.log (`Checking for seller ${id} data`);
 
     const seller_data = await sql<SelectSeller>`
       SELECT
@@ -130,7 +130,7 @@ export async function fetchSellerById(id: number) {
 export async function fetchUserData(id: number) {
   noStore();
   try {
-    console.log (`Fetching User ${id} data`);
+    // console.log (`Fetching User ${id} data`);
 
     const user_data = await sql<SelectUser>`
       SELECT
@@ -176,7 +176,7 @@ export async function fetchAllProducts() {
 export async function fetchProductKeyword(id: number) {
   noStore();
   try {
-    console.log (`Fetching product ${id} keyword_id data `);
+    // console.log (`Fetching product ${id} keyword_id data `);
 
     const keyword_data = await sql<SelectProductKeyword>`
       SELECT
@@ -194,7 +194,7 @@ export async function fetchProductKeyword(id: number) {
 export async function fetchKeyword(id: number) {
   noStore();
   try {
-    console.log (`Fetching keyword ${id}`);
+    // console.log (`Fetching keyword ${id}`);
 
     const data = await sql<SelectKeyword>`
       SELECT
