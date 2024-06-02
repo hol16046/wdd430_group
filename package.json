@@ -28,6 +28,7 @@
     "pg": "^8.11.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-multi-carousel": "^2.8.5",
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {

@@ -3,13 +3,6 @@
 import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-export const Message = () => {
-  useEffect(() => {
-    <DeletedMessage />
-  }, []);
-  return <DeletedMessage />;
-}
-
 export default function DeletedMessage() {
   const params = new URLSearchParams(document.location.search);
   const deleteMessage = params.get('message');

@@ -18,10 +18,25 @@ export function ProductDetails({ id }: { id: number }) {
 export function DeleteProduct({ product }: { product: SelectProduct }) {
   const deleteProductWithId = deleteProduct.bind(null, product.id);
   return (
-    <form action={deleteProductWithId}>
-      <button className="form-btn">
+    <form action={deleteProductWithId} className='grid mb-3 sm:mx-auto pr-3 w-full'>
+      <button className="form-btn justify-self-end self-center col-span 1 md:justify-self-center">
         Delete Product
       </button>
     </form>
+  );
+}
+
+export function EditProduct({ id }: { id: number }) {
+  return (
+    <div className='grid pl-3 mb-3 sm:mx-auto w-full'>
+      <Link
+        href={`/products/${id}/edit/`} passHref legacyBehavior> 
+        <button
+          type="button"
+          className="form-btn self-center col-span-1 justify-self-start md:justify-self-center">
+          Edit Product
+        </button>
+      </Link>  
+    </div>  
   );
 }

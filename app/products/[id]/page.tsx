@@ -1,7 +1,7 @@
 // Code: ProductPage component
 import Header from '../../ui/header/header';
 import LargeProduct from '../../ui/products/large-product';
-import { DeleteProduct } from '@/app/ui/products/buttons';
+import { DeleteProduct, EditProduct } from '@/app/ui/products/buttons';
 import Ratings from '../../ui/ratings';
 import { notFound } from 'next/navigation';
 import {
@@ -43,10 +43,16 @@ export default async function ProductPage({
   return (
     <main className='font-red-hat'>
       <Header />
-      <LargeProduct product={product} images={images} />
-      <Ratings ratings={ratings} />
-      {/* Show the Delete Product option only if seller is logged in and the product belongs to the seller */}
-      {/* <DeleteProduct product={product} /> */}
+      <div className='grid sm:max-w-[80%] sm:mx-auto'>
+        <LargeProduct product={product} images={images} />
+        <Ratings ratings={ratings} />
+          <div className='grid grid-cols-2'>
+          {/* Show the Edit Product option only if seller is logged in and the product belongs to the seller */}
+          <EditProduct id={id} />
+          {/* Show the Delete Product option only if seller is logged in and the product belongs to the seller */}
+          <DeleteProduct product={product} />
+        </div>
+      </div>
       <Footer />
     </main>
   );
