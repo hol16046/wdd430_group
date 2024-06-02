@@ -3,6 +3,13 @@
 import { type PutBlobResult } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
 import { useState, useRef } from 'react';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Upload Images',
+  };
+
+
  
 export default function SellerImageUploadPage() {
   const inputFileRef = useRef<HTMLInputElement>(null);

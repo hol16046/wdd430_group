@@ -1,6 +1,7 @@
 import { sql } from '@vercel/postgres';
 import { unstable_noStore as noStore} from 'next/cache';
-import { SelectProduct, SelectProductImage, SelectRating, SelectSeller, SelectUser } from '../lib/definitions';
+import { SelectProduct, SelectProductImage, SelectRating, SelectSeller, SelectUser, SelectProductKeyword, SelectKeyword } from '../lib/definitions';
+
 
 
 export async function fetchProductData(id: number) {
@@ -171,3 +172,41 @@ export async function fetchAllProducts() {
     throw new Error('Failed to fetch all products.');
   }
 }
+
+export async function fetchProductKeyword(id: number) {
+  noStore();
+  try {
+    console.log (`Fetching product ${id} keyword_id data `);
+
+    const keyword_data = await sql<SelectProductKeyword>`
+      SELECT
+      product_keywords.keyword_id
+      FROM product_keywords
+      WHERE product_keywords.product_id = ${id}`;
+      
+    const product_keyword = keyword_data.rows;
+    return product_keyword;
+  } catch (error) {
+    throw new Error('Failed to fetch keyword_id data.');
+  }
+}
+
+export async function fetchKeyword(id: number) {
+  noStore();
+  try {
+    console.log (`Fetching keyword ${id}`);
+
+    const data = await sql<SelectKeyword>`
+      SELECT
+        keyword
+      FROM keywords
+      WHERE id = ${id}`;
+
+    const keyword = data.rows;
+
+    return keyword;
+  } catch (error) {
+    throw new Error('Failed to fetch keyword.');
+  }
+}
+

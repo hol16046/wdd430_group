@@ -5,7 +5,7 @@ import Footer from '../ui/footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Artists Page',
+    title: 'Meet the Artists',
   };
 
 export default function ArtistsPage(){

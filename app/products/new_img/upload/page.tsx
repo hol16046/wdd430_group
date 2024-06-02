@@ -10,6 +10,13 @@ import Header from '@/app/ui/header/header';
 import Footer from '@/app/ui/footer';
 import { SelectProduct } from '@/app/lib/definitions';
 import { Form } from '@/app/ui/products/upload-img-form';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Upload Image',
+  };
+
+
  
 export default async function NewProductImageUploadPage() {
   const products: SelectProduct[] = await fetchAllProducts();

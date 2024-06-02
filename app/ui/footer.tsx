@@ -20,13 +20,13 @@ export default function Footer() {
             </div>
             <div className='grid grid-cols-4 gap-4 mt-8'>
                 <Link href="https://www.facebook.com" target="_blank" className='btn btn-link'>
-                    <Image src={"/facebook logo_icon.png"} width={32} height={32} alt="Facebook logo"/>
+                    <Image src={"/social_media_images/facebook logo_icon.png"} width={32} height={32} alt="Facebook logo"/>
                 </Link>
                     <Link href="https://www.instagram.com" target="_blank" className='btn btn-link'>
-                    <Image src={"/instagram logo_icon.png"} width={32} height={32} alt="Instagram logo"/>
+                    <Image src={"/social_media_images/instagram logo_icon.png"} width={32} height={32} alt="Instagram logo"/>
                 </Link>
                     <Link href="https://www.twitter.com" target="_blank" className='btn btn-link'>
-                    <Image src={"/twitter logo_icon.png"} width={32} height={32} alt="Twitter logo"/>
+                    <Image src={"/social_media_images/twitter logo_icon.png"} width={32} height={32} alt="Twitter logo"/>
                 </Link>
             </div>
         <p className="mt-3">Copyright {'\u00A9'} {currentYear}</p> 
