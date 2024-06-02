@@ -1,4 +1,3 @@
-// Code: ProductPage component
 import Header from '../../ui/header/header';
 import LargeProduct from '../../ui/products/large-product';
 import Ratings from '../../ui/ratings';
@@ -12,6 +11,13 @@ import {
 } from '../../lib/data';
 import Footer from '@/app/ui/footer';
 import { Metadata, ResolvingMetadata } from 'next'
+
+import Breadcrumbs from '../../ui/products/breadcrumbs';
+import {
+  SelectProduct,
+  SelectProductImage,
+  SelectRating,
+} from '../../lib/definitions';
 
 // Dynaimically generate the metadata for each page
 type Props = {
