@@ -1,29 +1,16 @@
 import Header from "@/app/ui/header/header";
 import Footer from "@/app/ui/footer";
 import SellerProfile from "@/app/ui/artists/seller-profile";
-import { fetchSellerById, fetchSellerData, fetchUserData } from "@/app/lib/data";
+import { fetchSellerData, fetchUserData } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import React from 'react';
-import { Metadata, ResolvingMetadata } from 'next'
 
-// Dynaimically generate the metadata for each page
-type Props = {
-  params: { artistId: number }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  // read route params
-  const id = params.artistId
-  // fetch product data
-  const seller = await fetchSellerData(id)
+export async function generateMetadata({ params }: { params: {artistId: number } }) {
+  const id = params.artistId;
+  const seller = await fetchSellerData(id);
   return {
-    title: seller.shop_name,
-    description: seller.shop_story,
-
-  }
+    title: seller.shop_name
+  };
 }
 
 export default async function ArtistBioPage({
