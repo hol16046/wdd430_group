@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import Header from '../ui/header/header';
 import Footer from '../ui/footer';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'About Us',
+  };
 
 export default function AboutUs() {
   return (

@@ -4,6 +4,13 @@ import NewProductForm from '@/app/ui/products/add-new-product-form';
 import Header from '@/app/ui/header/header';
 import Footer from '@/app/ui/footer';
 import { SelectSeller } from '@/app/lib/definitions';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Upload Image',
+  };
+
+
  
 export default async function AddNewProductPage() {
   const seller: SelectSeller = await fetchSellerById(2);

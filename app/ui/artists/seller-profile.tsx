@@ -2,6 +2,7 @@
 
 import { SelectUser, SelectSeller } from "@/app/lib/definitions";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SellerProfile({ user, seller }: { user: SelectUser, seller: SelectSeller }) {
   return (
@@ -27,7 +28,14 @@ export default function SellerProfile({ user, seller }: { user: SelectUser, sell
           </dl>
         </div>
         <div className="px-4 py-3 sm:px-6 flex justify-center">
-          <button className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Contact Artist</button>
+        <Link
+          href={`mailto:${user.email}`} passHref legacyBehavior> 
+            <button
+              type="button"
+              className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Contact Artist
+            </button>
+        </Link>  
         </div>
       </div>
     </div>

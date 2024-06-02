@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: {artistId: number }
   };
 }
 
-  export default async function ArtistBioPage({
+export default async function ArtistBioPage({
     params,
   }: {
     params: { artistId: number };

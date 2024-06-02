@@ -5,6 +5,7 @@ import Header from './ui/header/header';
 import Footer from './ui/footer'
 
 
+
 export default function Home() {
   return (
     <main className='font-red-hat'>

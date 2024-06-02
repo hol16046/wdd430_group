@@ -6,8 +6,8 @@ export default function Logo() {
       <Image
         src={'/logo-transparent.png'}
         alt='Company Logo'
-        width={250}
-        height={200}
+        width={260}
+        height={260}
       />
     </div>
   );

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ProductDetails } from './buttons';
 
 
+
 export default async function Product({ id }: { id: number }) {
   
   const [

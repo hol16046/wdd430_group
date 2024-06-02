@@ -41,8 +41,8 @@ export const product_images = pgTable('product_images', {
 });
 
 export const product_keywords = pgTable('product_keywords', {
-  product_id: integer('product_id').references(() => products.id),
-  keyword_id: integer('keyword_id').references(() => keywords.id),
+  product_id: integer('product_id').notNull().references(() => products.id),
+  keyword_id: integer('keyword_id').notNull().references(() => keywords.id),
 });
 
 export const keywords = pgTable('keywords', {
