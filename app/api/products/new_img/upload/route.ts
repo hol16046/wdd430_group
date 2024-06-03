@@ -9,11 +9,13 @@ export async function POST(request: Request): Promise<NextResponse> {
   let productId = null;
   const alt_text = searchParams.get('alt_text');
 
+  console.log(searchParams);
+
   if (product_id != null) {
     productId = parseInt(product_id);
   }
   
-  console.log(process.env.BLOB_READ_WRITE_TOKEN);
+  //console.log(process.env.BLOB_READ_WRITE_TOKEN);
 
 
   if (filename === null) {
