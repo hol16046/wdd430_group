@@ -57,7 +57,7 @@ export default function CreateRatingButton({ productId }: CreateRatingButtonProp
       {!showForm ? (
         <button
           onClick={() => setShowForm(true)}
-          className="mt-4 px-4 py-2 bg-theme-dark-teal text-white rounded hover:bg-theme-rust"
+          className="mt-4 form-btn"
         >
           Rate this product
         </button>

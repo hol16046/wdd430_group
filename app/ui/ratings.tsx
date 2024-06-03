@@ -15,7 +15,7 @@ export default function Ratings({ ratings, productId }: RatingsProps) {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-3 grid col-span-3">
       <h3 className="font-semibold text-md">Product Ratings</h3>
       {ratings.length > 0 ? (
         <>

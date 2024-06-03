@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className='font-red-hat'>
       <Header />
-      <div className='container grid sm:grid-cols-1 lg:grid-cols-5 gap-4 !w-auto lg:w-auto ml-10 mr-10'>
+      <div className='container grid grid-cols-1 lg:grid-cols-5 gap-4 !w-auto lg:w-auto mx-10 mb-5'>
         <aside id='filters' className='hidden sm:grid'>
         <Filter />
         </aside>
