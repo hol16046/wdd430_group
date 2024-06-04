@@ -1,7 +1,7 @@
 import Features from './ui/features';
 import Header from './ui/header/header';
 import Footer from './ui/footer'
-import ProductsWrapper from './ui/wrapper';
+import ProductsWrapper from './ui/products/wrapper';
 
 
 

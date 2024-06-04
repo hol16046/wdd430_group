@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import Sort from './sort';
-import ProductsGrid from './products/products-grid';
+import ProductsGrid from './products-grid';
 import Filter from './filter';
 
 
