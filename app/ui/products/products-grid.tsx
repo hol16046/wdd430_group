@@ -1,21 +1,40 @@
-
-import Product from './ind-product';
 import React from 'react';
+import { useState, useEffect } from 'react';
+import { ProductDetails } from './buttons';
+import { fetchAllProducts } from '../../lib/data';
+import Image from "next/image"
 
-let gridSize = 6
 
+export default function ProductsGrid({ sortOrder }) {
+  const [products, setProducts] = useState([]);
 
-export default function ProductsGrid () {
+  useEffect(() => {
+    async function loadProducts() {
+      const allProducts = await fetchAllProducts();
+      setProducts(allProducts);
+    }
+    loadProducts();
+  }, []);
+
+ 
+
+  useEffect(() => {
+    const sortedProducts = [...products].sort((a, b) => {
+      return sortOrder === 'high-to-low' ? b.price - a.price : a.price - b.price;
+    });
+    setProducts(sortedProducts);
+  }, [sortOrder]);
 
   return (
     <section className='grid sm:grid-cols-1 mb-10 lg:grid-cols-3 gap-4 col-span-3'>
-      
-        {Array.from({ length: gridSize }, (_, index) => (
-          <div key={index + 1}> 
-            {/* @ts-expect-error Server Component */}
-            <Product id={index +1} /> 
-          </div>
-        ))}
+      {products.map((product) => (
+        <div key={product.id} className='border-theme-rust border-2 rounded-lg p-3'>
+                   <h3>{product.name}</h3>
+                   <br></br>
+                   <p>{product.price}</p>
+                   <ProductDetails id={product.id} />
+                   </div>
+      ))}
     </section>
   );
 }

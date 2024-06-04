@@ -25,8 +25,16 @@ const config: Config = {
       fontFamily: {
         'playfair': ['var(--font-playfair)', "serif"],
         'red-hat': ['var(--font-red-hat)', "sans-serif"],
-        
+      },
+      animation: {
+        'squish': 'squish 200ms ease-in-out',
+      },
+      keyframes: {
+        squish: {
+          '50%': {scale: '1.4 0.6'},
+        }
       }
+
     },
   },
   plugins: [],

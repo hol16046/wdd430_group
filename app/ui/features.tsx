@@ -7,7 +7,7 @@ import { SellerDetails } from "./artists/buttons";
 
 export default async function Features(){
 
-    const id = 5
+    let id = 5
 
     const [
         seller,
@@ -22,6 +22,7 @@ export default async function Features(){
       if (!product) {
         notFound();
       };
+
 
     return(
         <>
@@ -49,9 +50,45 @@ export default async function Features(){
                 alt={product.name}
                 />
                 <h4>{product.name}</h4>
+
+<!--     const alt = seller.shop_name + ' logo';
+    if (!seller.user_id) {
+        id=4
+    } else {
+        id = seller.user_id;
+    }
+
+    return (
+        <div className="grid grid-cols-2 rounded-lg border-4 p-4 mx-auto">
+            <div className='justify-self-center self-center'>
+                <h3>Featured Artist</h3>
+                <div>
+                    <Image
+                    src={seller.shop_logo}
+                    width={200}
+                    height={150}
+                    className="hidden md:block rounded-md"
+                    alt={alt}
+                    />
+                    <h4>{seller.shop_name}</h4>
+                </div>
+                <SellerDetails id={id} /> 
+
             </div>
+            <div className='justify-self-center self-center'>
+                <h3 className='lg:mt-10'>Featured Product</h3>
+                <div>
+                    <Image
+                    src={images[0].image_file}
+                    width={200}
+                    height={150}
+                    className="hidden md:block rounded-md"
+                    alt={images[0].alt_text}
+                    />
+                    <h4>{product.name}</h4>
+                </div>
                 <ProductDetails id={product.id} />
-            </div>
-        </>
-    )
+            </div>  -->
+        </div>
+    );
 }

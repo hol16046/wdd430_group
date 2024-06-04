@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 
  
-export default async function NewProductImageUploadPage() {
+export default async function AddNewProductPage() {
   const seller: SelectSeller = await fetchSellerById(2);
 
   if (!seller) {

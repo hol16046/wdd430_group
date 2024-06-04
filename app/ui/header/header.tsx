@@ -12,6 +12,7 @@ function SearchFallback() {
 export default function Header() {
   return (
     <header className='white-1000 py-8 container mx-auto grid grid-cols-4'>
+      <h1 className='sr-only'>Hand Crafted Haven</h1>
       {/* Logo */}
       <div className='flex items-center justify-start col-start-1'>
         <Logo />

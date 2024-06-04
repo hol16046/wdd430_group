@@ -1,14 +1,15 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { addProduct } from '@/app/lib/action';
+import { editProduct } from '@/app/lib/action';
 import { useFormState } from 'react-dom';
-import { SelectSeller } from '@/app/lib/definitions';
+import { SelectSeller, SelectProduct } from '@/app/lib/definitions';
+import Link from 'next/link';
 
-export default function NewProductForm({ seller }: { seller: SelectSeller }) {
+export default function EditProductForm({ seller, product }: { seller: SelectSeller, product: SelectProduct }) {
   const initialState = { key: '', message: '', errors: undefined };
-  const addProductWithSellerId = addProduct.bind(null, seller.id);
-  const [state, dispatch] = useFormState(addProductWithSellerId, initialState);
+  const editProductWithSellerId = editProduct.bind(null, product.id);
+  const [state, dispatch] = useFormState(editProductWithSellerId, initialState);
   const form = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
   return (
     <div className='grid grid-cols-1 gap-2 p-3 sm:p-4 mx-auto sm:max-w-[80%]'>
       <h1 className='font-playfair text-xl self-center justify-self-center'>
-        Add a New Product
+        Edit Product: {product.name}
       </h1>
 
       <form
@@ -37,7 +38,7 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
           name='name'
           type='text'
           className='bg-theme-white border border-theme-dark-teal text-sm rounded-lg focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 block w-full p-1 col-span-5 justify-self-center self-center placeholder:text-gray-600'
-          placeholder='Nature&#39;s Glow Candle'
+          defaultValue={product.name}
           aria-describedby='name-error'
         />
         <div id='name-error' aria-live='polite' aria-atomic='true'>
@@ -56,7 +57,7 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
         <textarea
           id='description'
           name='description'
-          placeholder='Illuminate your space with the warm, flickering light of our Nature&#39;s Glow Candle. Handcrafted with care...'
+          defaultValue={product.description}
           className='w-full block bg-theme-white col-span-5 border border-theme-dark-teal focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 justify-self-center rounded-md p-1 text-sm placeholder:font-red-hat placeholder:text-gray-600'
           aria-describedby='description-error'></textarea>
         <div id='description-error' aria-live='polite' aria-atomic='true'>
@@ -78,7 +79,7 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
           type='number'
           step='0.01'
           className='bg-theme-white border border-theme-dark-teal text-sm rounded-lg focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 block w-full p-1 col-span-5 sm:col-span-2 sm:col-end-4 justify-self-center self-center text-right placeholder:text-gray-600 placeholder:text-right'
-          placeholder='29.99'
+          defaultValue={product.price}
           aria-describedby='price-error'
         />
         <div id='price-error' aria-live='polite' aria-atomic='true'>
@@ -100,7 +101,7 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
           type='number'
           step='1'
           className='bg-theme-white border border-theme-dark-teal text-sm rounded-lg focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 block w-full p-1 col-span-5 sm:col-span-2 sm:col-end-4 justify-self-center self-center text-right placeholder:text-gray-600 placeholder:text-right'
-          placeholder='10'
+          defaultValue={product.stock}
           aria-describedby='stock-error'
         />
         <div id='stock-error' aria-live='polite' aria-atomic='true'>
@@ -111,11 +112,15 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
               </p>
             ))}
         </div>
-
+        <Link
+          href={`/products/${product.id}`}
+          className='form-btn col-span-2 mt-2 self-center justify-self-start'>
+          Cancel
+        </Link>
         <button
           type='submit'
-          className='form-btn col-span-5 mt-2 self-center justify-self-end'>
-          Add Product
+          className='form-btn col-span-3 mt-2 self-center justify-self-end'>
+          Update Product
         </button>
       </form>
       <div className='justify-self-center text-theme-rust font-semibold text-2xl'>
@@ -125,63 +130,3 @@ export default function NewProductForm({ seller }: { seller: SelectSeller }) {
   );
 }
 
-// return (
-//   <div className='grid grid-cols-1 gap-2 p-3 sm:p-4 mx-auto sm:max-w-[80%]'>
-//     <h1 className="font-playfair text-xl self-center justify-self-center">Add a New Product</h1>
-
-//     <form
-//       className='grid grid-cols-5 auto-rows-auto justify-self-center gap-1 w-full'
-//       onSubmit={async (event) => {
-//         event.preventDefault();
-
-//         if (!sellerId || !name.current?.value || !description.current?.value || !price.current?.value || !stock.current?.value) {
-//           throw new Error('Missing fields');
-//         }
-
-//         const seller_id = sellerId;
-//         const newName = name.current?.value;
-//         const newDescription = description.current?.value;
-//         const newPrice = price.current?.value;
-//         const newStock = stock.current?.value;
-
-//         const response = await fetch(
-//           `/api/products/new/upload?seller_id=${seller_id}&name=${newName}&description=${newDescription}&price=${newPrice}&stock=${newStock}`,
-//           {
-//             method: 'POST',
-//             body: newName,
-//           },
-//         );
-
-//         if (response.status === 201) {
-//           success = true;
-//         }
-
-//       }}
-//     >
-//       <label htmlFor="product_name" className="col-span-5 text-sm font-medium justify-self-start self-center">
-//         Product Name:
-//       </label>
-//       <input name="product_name" ref={name} type="text" className='bg-theme-white border border-theme-dark-teal text-sm rounded-lg focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 block w-full p-1 col-span-5 justify-self-center self-center placeholder:text-gray-600' placeholder='Nature&#39;s Glow Candle' required />
-//       <label htmlFor="product_description" className="col-span-5 text-sm font-medium justify-self-start self-center">
-//         Product Description:
-//       </label>
-//       <textarea name="product_description" ref={description} placeholder="Illuminate your space with the warm, flickering light of our Nature&#39;s Glow Candle. Handcrafted with care..." className="w-full block bg-theme-white col-span-5 border border-theme-dark-teal focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 justify-self-center rounded-md p-1 text-sm placeholder:font-red-hat placeholder:text-gray-600"></textarea>
-//       <label htmlFor="product_price" className="col-span-5 text-sm font-medium justify-self-start self-center">
-//         Product Price:
-//       </label>
-//       <input name="product_price" ref={price} type="text" className='bg-theme-white border border-theme-dark-teal text-sm rounded-lg focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 block w-full p-1 col-span-5 justify-self-center self-center placeholder:text-gray-600' placeholder='29.99' required />
-//       <label htmlFor="product_stock" className="col-span-5 text-sm font-medium justify-self-start self-center">
-//         Product Stock:
-//       </label>
-//       <input name="product_stock" ref={stock} type="text" className='bg-theme-white border border-theme-dark-teal text-sm rounded-lg focus:outline-none focus:ring-theme-rust focus:border-theme-rust focus:border-2 block w-full p-1 col-span-5 justify-self-center self-center placeholder:text-gray-600' placeholder='10' required />
-
-//       <button type="submit" className='form-btn col-span-5 row-end-12 self-center justify-self-end'>Add Product</button>
-//     </form>
-//     {success === true && (
-//       <div className="justify-self-center text-theme-rust font-semibold text-2xl">
-//         <p>Product added successfully!</p>
-//       </div>
-//     )}
-//   </div>
-// );
-// }
