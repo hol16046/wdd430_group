@@ -10,7 +10,7 @@ export default function ProductsWrapper() {
 
   return (
     <>
-        <aside id='filters' className='hidden sm:grid'>
+        <aside id='filters' className='md:grid rounded-lg border-4 p-4'>
             <Filter />
             <Sort setSortOrder={setSortOrder} />
        </aside>

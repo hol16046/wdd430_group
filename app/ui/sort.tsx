@@ -8,7 +8,7 @@ export default function Sort({ setSortOrder }) {
   };
 
   return (
-    <div className="grid rounded-lg border-4 p-4">
+    <div className="">
       <form>
         <h4>Sort</h4>
         <select name="" id="" onChange={handleSortChange}>

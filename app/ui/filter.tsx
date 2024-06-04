@@ -1,6 +1,6 @@
 export default function Filter(){
     return (
-        <><div className="grid rounded-lg border-4 p-4">
+        <><div className="">
             <h3>Filters</h3>
             <form>
                 <label htmlFor="Categories">Categories</label>
