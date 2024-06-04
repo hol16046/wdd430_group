@@ -51,7 +51,7 @@ export default async function Features(){
                 />
                 <h4>{product.name}</h4>
 
-<!--     const alt = seller.shop_name + ' logo';
+    {/* const alt = seller.shop_name + ' logo';
     if (!seller.user_id) {
         id=4
     } else {
@@ -88,7 +88,7 @@ export default async function Features(){
                     <h4>{product.name}</h4>
                 </div>
                 <ProductDetails id={product.id} />
-            </div>  -->
+            </div> */}
         </div>
     );
 }
