@@ -6,8 +6,10 @@ import { SellerDetails } from "./artists/buttons";
 
 
 export default async function Features(){
+    let sellers = [1, 4, 5];
 
-    let id = 5
+    let randomIndex = Math.floor(Math.random() * sellers.length);
+    let id = sellers[randomIndex];
 
     const [
         seller,
