@@ -7,12 +7,12 @@ import type { SelectUser } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
 
 type User = {
-  id: string; // Ensure 'id' is a string
+  id: string;
   f_name: string;
   l_name: string;
   email: string;
   password: string;
-  role: 'seller' | 'user';
+  role: string;
 };
 
 async function getUser(email: string): Promise<User | undefined> {
@@ -43,6 +43,7 @@ export const { auth, signIn, signOut } = NextAuth({
             const passwordsMatch = await bcrypt.compare(password, user.password);
  
             if (passwordsMatch) return user;
+            console.log(user)
             // console.log('Valid Credentials');
             // return null;
           }

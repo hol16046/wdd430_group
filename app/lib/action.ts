@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import { AuthError } from 'next-auth';
 import { NextResponse } from 'next/server';
 
@@ -148,7 +148,9 @@ export async function authenticate(
     return { key: 'success', message: `${name} added successfully!`};
   }
 
-
+  export async function handleSignOut(){
+    await signOut();
+  }
   // export async function addProduct(sellerId: number, prevState: ProductState, formData: FormData) {
   //   const validatedFields = AddProduct.safeParse({
   //     product_name: product_name,

@@ -7,6 +7,7 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
+      //console.log(isLoggedIn);
       const isOnProfile = nextUrl.pathname.startsWith('/profile');
       if (isOnProfile) {
         if (isLoggedIn) return true;
