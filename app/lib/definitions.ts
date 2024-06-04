@@ -38,3 +38,8 @@ export type ProductForm = {
   price: number;
   stock: number;
 }
+
+export type ProductsWithCategories = {
+  product: SelectProduct;
+  product_category: SelectProductCategory;
+}

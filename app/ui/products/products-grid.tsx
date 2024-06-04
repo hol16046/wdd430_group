@@ -28,8 +28,8 @@ export default function ProductsGrid({ sortOrder }) {
     <section className='grid sm:grid-cols-1 mb-10 lg:grid-cols-3 gap-4 col-span-3'>
       {products.map((product) => (
         <div key={product.id}>
-          {/* @ts-expect-error Server Component */}
-          <Product id={product.id} />
+          
+          {/* <Product id={product.id} /> */}
         </div>
       ))}
     </section>

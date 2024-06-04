@@ -149,33 +149,4 @@ export async function authenticate(
   }
 
 
-  // export async function addProduct(sellerId: number, prevState: ProductState, formData: FormData) {
-  //   const validatedFields = AddProduct.safeParse({
-  //     product_name: product_name,
-  //     product_description: product_description,
-  //     product_price: product_price,
-  //     product_stock: product_stock,
-  //   });
-
-  //   console.log(validatedFields);
-  //   if(!validatedFields.success) {
-  //     return {
-  //       errors: validatedFields.error.flatten().fieldErrors,
-  //       message: 'Missing Fields. Failed to Add Product.',
-  //     };
-  //   }
-  //   const { seller_id, name, description, price, stock } = validatedFields.data;
-
-  //   try {
-  //     await sql`
-  //       INSERT INTO products (seller_id, name, description, price, stock)
-  //       VALUES (${seller_id}, ${name}, ${description}, ${price}, ${stock})
-  //     `;
-  //   } catch (error) {
-  //     console.error('Database Error:', error);
-  //     return { message: 'Failed to Add Product.' };
-  //   }
-
-  //   revalidatePath('/products');
-  //   return { message: 'Product Added.' };
-  // }
+ 

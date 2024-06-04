@@ -37,7 +37,6 @@ export default async function Features(){
                 />
                 <h4>{seller.shop_name}</h4>
             </div>
-                 {/* @ts-expect-error Server Component */}
                 <SellerDetails id={seller.user_id} /> 
             <h3 className='mt-10'>Featured Product</h3>
             <div>
