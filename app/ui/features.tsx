@@ -25,7 +25,7 @@ export default async function Features(){
 
     return(
         <>
-        <div className="grid-wrap rounded-lg border-4 p-4">
+        <div className="grid-wrap rounded-lg border-4 p-4 mb-1">
             <h3>Featured Artist</h3>
             <div>
                 <Image
