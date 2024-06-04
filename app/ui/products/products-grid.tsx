@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { fetchAllProducts } from '../../lib/data';
 import { ProductDetails } from './buttons';
 
-let gridSize = 6
-
 
 export default function ProductsGrid({ sortOrder }) {
   const [products, setProducts] = useState([]);
@@ -23,8 +21,6 @@ export default function ProductsGrid({ sortOrder }) {
     });
     setProducts(sortedProducts);
   }, [sortOrder]);
-export default function ProductsGrid({ sortOrder }) {
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function loadProducts() {

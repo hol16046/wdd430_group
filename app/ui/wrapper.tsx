@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Sort from './sort';
 import ProductsGrid from './products/products-grid';
-import Filter from './filter';
 
 
 export default function ProductsWrapper() {
@@ -11,7 +10,6 @@ export default function ProductsWrapper() {
   return (
     <>
         <aside id='filters' className='hidden sm:grid'>
-            <Filter />
             <Sort setSortOrder={setSortOrder} />
        </aside>
 
