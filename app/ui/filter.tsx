@@ -8,10 +8,6 @@ export default function Filter(){
                     <option value="">Option 1</option>
                     <option value="">Option 2</option>
                 </select>
-                <label htmlFor="Categories">Prices</label>
-                <input name="priceFilter" type="range" min="0" max="300"/>
-                <label htmlFor="ratingFilter">Rating</label>
-                <input name="ratingFilter" type="range" min="1" max="5"/>
             </form>
             </div>
         </>
