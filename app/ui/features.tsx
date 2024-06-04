@@ -25,7 +25,7 @@ export default async function Features(){
 
 
     return(
-        <>
+        
         <div className="grid-wrap rounded-lg border-4 p-4 mb-1">
             <h3>Featured Artist</h3>
             <div>
@@ -87,8 +87,8 @@ export default async function Features(){
                     />
                     <h4>{product.name}</h4>
                 </div>
-                <ProductDetails id={product.id} />
-            </div> */}
+                <ProductDetails id={product.id} /> */}
+            </div> 
         </div>
     );
 }
