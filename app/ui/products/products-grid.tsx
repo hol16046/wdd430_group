@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { ProductDetails } from './buttons';
 import { fetchAllProducts } from '../../lib/data';
 import Image from "next/image"
+import  SortedImages  from '@/app/ui/products/sorted-img'
 
 
 export default function ProductsGrid({ sortOrder }) {
@@ -28,9 +29,9 @@ export default function ProductsGrid({ sortOrder }) {
   return (
     <section className='grid sm:grid-cols-1 mb-10 lg:grid-cols-3 gap-4 col-span-3'>
       {products.map((product) => (
-        <div key={product.id} className='border-theme-rust border-2 rounded-lg p-3'>
+        <div key={product.id} className='border-theme-rust border-2 rounded-lg p-3 w-50 h-75'>
                    <h3>{product.name}</h3>
-                   <br></br>
+                   <SortedImages id={product.id} />
                    <p>{product.price}</p>
                    <ProductDetails id={product.id} />
                    </div>
