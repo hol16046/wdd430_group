@@ -11,6 +11,7 @@ function SearchFallback() {
 
 export default function Header() {
   return (
+    <div>
     <header className='white-1000 py-8 container mx-auto grid grid-cols-4'>
       <h1 className='sr-only'>Hand Crafted Haven</h1>
       {/* Logo */}
@@ -22,7 +23,7 @@ export default function Header() {
         <NavLinks />
         <SignOut /> 
       </nav>
-      <div id='calendar' className='text-sm ml-4 col-start-4'>
+      <div id='calendar' className='hidden text-sm ml-4 col-start-4 md:block'>
         <Calendar  />     
       </div>
       {/* Search and Calendar */}
@@ -32,5 +33,9 @@ export default function Header() {
         </Suspense>
       </div>
     </header>
+    <div id='calendar' className=' text-sm ml-4 col-start-4 md:hidden p-10'>
+        <Calendar  />     
+      </div>
+    </div>
   );
 }
