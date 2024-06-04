@@ -47,4 +47,11 @@ border: solid 2px #333;
   .form-btn {
     @apply focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-4 py-2.5;
   }
+  .carousel-btn {
+    @apply block absolute top-0 bottom-0 p-1 cursor-pointer *:stroke-theme-white *:fill-theme-dark-teal *:w-[2rem] *:h-[2rem] hover:bg-[rgb(0,0,0,0.2)] focus-visible:bg-[rgb(0,0,0,0.2)] transition ease-in-out duration-100 motion-safe:*:hover:scale-[1.2] motion-safe:*:focus-visible:scale-[1.2] focus-visible:outline-gray-700;
+  }
+
+  .carousel-dot-btn {
+    @apply block w-[1rem] h-[1rem] cursor-pointer *:stroke-theme-white *:fill-theme-dark-teal *:w-full *:h-full transition ease-in-out duration-100 motion-safe:*:hover:scale-[1.2] motion-safe:*:focus-visible:scale-[1.2] focus-visible:outline-gray-700;
+  }
 }

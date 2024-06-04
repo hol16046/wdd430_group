@@ -4,6 +4,7 @@ import Footer from './ui/footer'
 import ProductsWrapper from './ui/wrapper';
 
 
+
 export default function Home() {
   return (
     <main className='font-red-hat'>

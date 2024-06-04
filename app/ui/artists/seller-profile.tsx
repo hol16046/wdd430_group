@@ -2,14 +2,18 @@
 
 import { SelectUser, SelectSeller } from "@/app/lib/definitions";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SellerProfile({ user, seller }: { user: SelectUser, seller: SelectSeller }) {
+
+  const alt = seller.shop_name + ' logo';
+
   return (
     <div className="flex justify-center ">
       <div className="bg-white shadow overflow-hidden sm:rounded-lg w-full max-w-md">
         <div className="px-4 py-5 sm:px-6">
           <h3 className="text-lg leading-6 font-medium text-gray-900">{seller.shop_name} </h3>
-          <Image className="rounded-md justify-self-center col-span-3 mb-3" src={seller.shop_logo} width={350} height={250} alt={seller.shop_name}/>
+          <Image className="rounded-md justify-self-center col-span-3 mb-3" src={seller.shop_logo} width={350} height={250} alt={alt}/>
         </div>
         <div className="border-t border-gray-200">
           <dl>
@@ -27,7 +31,14 @@ export default function SellerProfile({ user, seller }: { user: SelectUser, sell
           </dl>
         </div>
         <div className="px-4 py-3 sm:px-6 flex justify-center">
-          <button className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Contact Artist</button>
+        <Link
+          href={`mailto:${user.email}`} passHref legacyBehavior> 
+            <button
+              type="button"
+              className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Contact Artist
+            </button>
+        </Link>  
         </div>
       </div>
     </div>

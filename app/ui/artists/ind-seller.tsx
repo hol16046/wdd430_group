@@ -1,18 +1,19 @@
-import { fetchSellerById } from '../../lib/data';
+import { fetchSellerData } from '../../lib/data';
 import Image from "next/image"
 import { SellerDetails } from './buttons';
-
 
 export default async function Seller({ user_id }: { user_id: number }) {
  
   const [ seller ] = await Promise.all([
     
-    fetchSellerById(user_id) 
+    fetchSellerData(user_id) 
   ]);
 
   if (!seller ) {
     return null; 
   }
+
+  const alt = seller.shop_name + ' logo';
 
   return (
     <div className="flex flex-col rounded-lg border-theme-rust border-2 p-3 items-center mx-auto">
@@ -23,7 +24,7 @@ export default async function Seller({ user_id }: { user_id: number }) {
         src={seller.shop_logo} 
         width={187}
         height={187}
-        alt={seller.shop_name}
+        alt={alt}
       />
       </div>
       {/* Render seller shop name */}

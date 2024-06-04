@@ -1,16 +1,19 @@
 import Header from "@/app/ui/header/header";
 import Footer from "@/app/ui/footer";
 import SellerProfile from "@/app/ui/artists/seller-profile";
-import { Metadata } from "next";
 import { fetchSellerData, fetchUserData } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import React from 'react';
 
-export const metadata: Metadata = {
-    title: 'Artist Bio Page',
+export async function generateMetadata({ params }: { params: {artistId: number } }) {
+  const id = params.artistId;
+  const seller = await fetchSellerData(id);
+  return {
+    title: seller.shop_name
   };
+}
 
-  export default async function ArtistBioPage({
+export default async function ArtistBioPage({
     params,
   }: {
     params: { artistId: number };

@@ -1,7 +1,12 @@
 import { SelectRating } from '../lib/definitions';
-import CreateRatingButton from '../reviews/CreateRatingButton';
+import CreateRatingButton from './reviews/CreateRatingButton';
 
-export default function Ratings({ ratings }: { ratings: SelectRating[] }) {
+interface RatingsProps {
+  ratings: SelectRating[];
+  productId: number;
+}
+
+export default function Ratings({ ratings, productId }: RatingsProps) {
   // Helper function to render stars
   const renderStars = (stars: number) => {
     const fullStars = '★'.repeat(stars);
@@ -10,7 +15,7 @@ export default function Ratings({ ratings }: { ratings: SelectRating[] }) {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-3 grid col-span-3">
       <h3 className="font-semibold text-md">Product Ratings</h3>
       {ratings.length > 0 ? (
         <>
@@ -27,7 +32,7 @@ export default function Ratings({ ratings }: { ratings: SelectRating[] }) {
       ) : (
         <p className="text-sm">No ratings available for this product.</p>
       )}
-      <CreateRatingButton />
+      <CreateRatingButton productId={productId} />
     </div>
   );
 }

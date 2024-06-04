@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ProductDetails } from './buttons';
 
 
+
 export default async function Product({ id }: { id: number }) {
   
   const [
@@ -28,6 +29,7 @@ export default async function Product({ id }: { id: number }) {
         src={images[0].image_file} 
         width={250}
         height={250}
+        sizes='30vw'
         alt={images[0].alt_text}
       />
       </div>

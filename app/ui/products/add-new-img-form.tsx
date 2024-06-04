@@ -6,7 +6,7 @@ import { SelectProduct } from '@/app/lib/definitions';
  
 export default function ImageUploadForm({products}: {products: SelectProduct[]}) {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const productId = useRef<HTMLOptionElement>(null);
+  const productId = useRef<HTMLSelectElement>(null);
   const altText = useRef<HTMLTextAreaElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   return (
@@ -24,6 +24,8 @@ export default function ImageUploadForm({products}: {products: SelectProduct[]})
  
           const file = inputFileRef.current.files[0];
           const product_id = productId.current?.value;
+          console.log(productId.current?.value);
+          console.log(product_id);
           const alt_text = altText.current?.value;
  
           const response = await fetch(
@@ -31,6 +33,7 @@ export default function ImageUploadForm({products}: {products: SelectProduct[]})
             {
               method: 'POST',
               body: file,
+              
             },
           );
  
@@ -46,8 +49,9 @@ export default function ImageUploadForm({products}: {products: SelectProduct[]})
            Product
          </label>
          <select
-          id="prdouct"
-          name="product_id"
+          id="product"
+          name="productIdSelect"
+          ref={productId}
           className="w-[95%] cursor-pointer rounded-md border-2 border-theme-rust p-1 my-2 text-sm outline-2 placeholder:text-gray-500 col-span-5 self-center justify-self-center"
           defaultValue=''
           aria-describedby="product-error"
@@ -56,12 +60,12 @@ export default function ImageUploadForm({products}: {products: SelectProduct[]})
             Select a product
           </option>
           {products.map((product) => (
-            <option key={product.id} value={product.id} ref={productId}>
+            <option key={product.id} value={product.id} >
               {product.name}
             </option>
           ))}
         </select>
-        <textarea name="alt_text" key='alt_text' ref={altText}placeholder="Please enter an image description" className="w-[95%] col-span-5 border-2 border-theme-rust justify-self-center rounded-md p-1 text-sm placeholder:font-red-hat placeholder:text-gray-600"></textarea>
+        <textarea name="alt_text" key='alt_text' ref={altText} placeholder="Please enter an image description" className="w-[95%] col-span-5 border-2 border-theme-rust justify-self-center rounded-md p-1 text-sm placeholder:font-red-hat placeholder:text-gray-600"></textarea>
         <button type="submit" className='mr-2.5 sm:mr-3 md:mr-5 lg:mr-6 form-btn col-start-5 row-end-7 self-center justify-self-end'>Upload</button>
       </form>
       {blob && (
