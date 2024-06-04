@@ -17,7 +17,6 @@ import React from 'react';
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Home', href: '/', icon: BuildingStorefrontIcon },
-  { name: 'Explore', href: '/explore', icon: MapIcon },
   { name: 'Cart', href: '/shopping-cart', icon: ShoppingCartIcon },
   { name: 'Artists', href: '/artists', icon: UserGroupIcon},
   { name: 'Profile', href: '/profile', icon: UserIcon },
