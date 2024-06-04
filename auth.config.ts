@@ -1,8 +1,17 @@
+import { randomBytes, randomUUID } from 'crypto';
 import type { NextAuthConfig } from 'next-auth';
  
 export const authConfig = {
   pages: {
     signIn: '/login',
+  },
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
+    generateSessionToken: () => {
+      return randomUUID?.() ?? randomBytes(32).toString('hex');
+    }
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
@@ -13,7 +22,7 @@ export const authConfig = {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
-        return Response.redirect(new URL('/profile', nextUrl));
+        return Response.redirect(new URL('/', nextUrl));
       }
       return true;
     },
