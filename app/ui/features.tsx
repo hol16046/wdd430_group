@@ -23,7 +23,35 @@ export default async function Features(){
         notFound();
       };
 
-    const alt = seller.shop_name + ' logo';
+
+    return(
+        
+        <div className="grid-wrap rounded-lg border-4 p-4 mb-1">
+            <h3>Featured Artist</h3>
+            <div>
+                <Image
+                src={seller.shop_logo}
+                width={200}
+                height={150}
+                className="hidden md:block"
+                alt={seller.shop_name}
+                />
+                <h4>{seller.shop_name}</h4>
+            </div>
+                 {/* @ts-expect-error Server Component */}
+                <SellerDetails id={seller.user_id} /> 
+            <h3 className='mt-10'>Featured Product</h3>
+            <div>
+                <Image
+                src={images[0].image_file}
+                width={200}
+                height={150}
+                className="hidden md:block"
+                alt={product.name}
+                />
+                <h4>{product.name}</h4>
+
+    {/* const alt = seller.shop_name + ' logo';
     if (!seller.user_id) {
         id=4
     } else {
@@ -45,6 +73,7 @@ export default async function Features(){
                     <h4>{seller.shop_name}</h4>
                 </div>
                 <SellerDetails id={id} /> 
+
             </div>
             <div className='justify-self-center self-center'>
                 <h3 className='lg:mt-10'>Featured Product</h3>
@@ -58,7 +87,7 @@ export default async function Features(){
                     />
                     <h4>{product.name}</h4>
                 </div>
-                <ProductDetails id={product.id} />
+                <ProductDetails id={product.id} /> */}
             </div> 
         </div>
     );
