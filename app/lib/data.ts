@@ -1,3 +1,5 @@
+"use server"
+
 import { sql } from '@vercel/postgres';
 import { db } from '../../drizzle/db';
 import { eq } from 'drizzle-orm';
@@ -178,6 +180,7 @@ export async function fetchUserData(id: number) {
 export async function fetchAllProducts() {
   noStore();
   try {
+    console.log("Trying to select")
     const data = await sql<SelectProduct>`
       SELECT
         products.id,
@@ -192,7 +195,7 @@ export async function fetchAllProducts() {
     return products;
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch all products.');
+    throw new Error(err);
   }
 }
 
