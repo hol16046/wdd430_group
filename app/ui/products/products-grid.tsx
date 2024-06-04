@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-//import Product from './ind-product';
+import { ProductDetails } from './buttons';
 import { fetchAllProducts } from '../../lib/data';
-
-let gridSize = 6
+import Image from "next/image"
 
 
 export default function ProductsGrid({ sortOrder }) {
@@ -17,6 +16,8 @@ export default function ProductsGrid({ sortOrder }) {
     loadProducts();
   }, []);
 
+ 
+
   useEffect(() => {
     const sortedProducts = [...products].sort((a, b) => {
       return sortOrder === 'high-to-low' ? b.price - a.price : a.price - b.price;
@@ -27,10 +28,12 @@ export default function ProductsGrid({ sortOrder }) {
   return (
     <section className='grid sm:grid-cols-1 mb-10 lg:grid-cols-3 gap-4 col-span-3'>
       {products.map((product) => (
-        <div key={product.id}>
-          {/* @ts-expect-error Server Component */}
-          <Product id={product.id} />
-        </div>
+        <div key={product.id} className='border-theme-rust border-2 rounded-lg p-3'>
+                   <h3>{product.name}</h3>
+                   <br></br>
+                   <p>{product.price}</p>
+                   <ProductDetails id={product.id} />
+                   </div>
       ))}
     </section>
   );
