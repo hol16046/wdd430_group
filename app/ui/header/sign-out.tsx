@@ -1,7 +1,12 @@
-import { signOut } from '@/auth';
+import { signOut, auth } from '@/auth';
 import { PowerIcon } from '@heroicons/react/24/outline';
 
-export default function SignOut(){
+export default async function SignOut(){
+    const session = await auth();
+    
+    if(!session){
+        return <a href="/login">Login</a>
+    }
     return(
         <form
           action={async () => {
