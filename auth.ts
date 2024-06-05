@@ -15,7 +15,7 @@ type User = {
   role: 'seller' | 'user';
 };
 
-async function getUser(email: string): Promise<User | undefined> {
+async function getUser(email: string) {
     try {
       const user = await sql<SelectUser>`SELECT * FROM users WHERE email=${email}`;
       return {
@@ -42,7 +42,9 @@ export const { auth, signIn, signOut } = NextAuth({
             if (!user) return null;
             const passwordsMatch = await bcrypt.compare(password, user.password);
  
-            if (passwordsMatch) return user;
+            if (passwordsMatch) {
+              return user;
+            }
             // console.log('Valid Credentials');
             // return null;
           }
@@ -52,4 +54,18 @@ export const { auth, signIn, signOut } = NextAuth({
       },
   }),
 ],
+callbacks: {
+  jwt({ token, user }) {
+    if (user && user.id) {
+      token.id = user.id.toString(); // Convert user.id to string
+    }
+    return token
+  },
+  session({ session, token }) {
+    if (token && token.id) {
+      session.user.id = token.id.toString(); // Convert token.id to string
+    }
+    return session
+  },
+}
 });

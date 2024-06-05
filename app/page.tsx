@@ -2,11 +2,13 @@ import Features from './ui/features';
 import Header from './ui/header/header';
 import Footer from './ui/footer'
 import ProductsWrapper from './ui/products/wrapper';
+import { SessionProvider } from 'next-auth/react';
 
 
 
 export default function Home() {
   return (
+    <SessionProvider >
     <main className='font-red-hat mx-auto'>
       <Header />
       <div className='container grid grid-cols-1 lg:grid-cols-5 gap-4 mx-auto w-full p-4'>
@@ -19,5 +21,6 @@ export default function Home() {
       </div>
       <Footer />
     </main>
+    </SessionProvider>
   );
 }
