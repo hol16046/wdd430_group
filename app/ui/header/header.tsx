@@ -20,6 +20,7 @@ export default function Header() {
       {/* Navigation */}
       <nav className='col-span-2 flex items-center justify-center'>
         <NavLinks />
+        {/* @ts-expect-error Server Component */}
         <SignOut /> 
       </nav>
       <div id='calendar' className='text-sm ml-4 col-start-4'>
