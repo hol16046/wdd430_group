@@ -35,16 +35,11 @@ export default function ProductsGrid({ productsData, uniqueProducts, categories,
   const [sortOrder, setSortOrder] = useState('high-to-low');
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
-  
-  // const filteredProducts = allProductsData.filter((product) => { return product.product_category });
-  // const filteredProductsByCategory = filteredProducts.filter((item) => item.product_category.category_id.toString() === selectedCategory);
 
   useEffect(() => {
-      //const uniqueProducts = allProductsData.filter((product, index, self) => self.findIndex((t) => t.product.id === product.product.id) === index);
       setProducts(uniqueProducts);
-      console.log('uniqueProducts:', uniqueProducts);
   }, [uniqueProducts]);
-  console.log('products:', products);
+  // console.log('products:', products);
 
   useEffect(() => {
     const sortedProducts = [...products].sort((a, b) => {
@@ -66,24 +61,9 @@ export default function ProductsGrid({ productsData, uniqueProducts, categories,
       setProducts(uniqueProducts);
     }
   }, [selectedCategory]);
-
-  // function getFilteredList() {
-  //  if (selectedCategory) {
-      //const uniqueProducts = products.filter((product, index, self) => self.findIndex((t) => t.product.id === product.product.id) === index);
-    // console.log('selectedCategory:', selectedCategory);
-    // const filteredProducts = allProductsData.filter((product) => { return product.product_category });
-    // console.log('filteredProducts:', filteredProducts);
-    // const filteredProductsByCategory = filteredProducts.filter((item) => item.product_category.category_id.toString() === selectedCategory);
-    // console.log('filteredProductsByCategory:', filteredProductsByCategory);
-  //  setProducts(filteredProductsByCategory);
-  //  }
-  // }
-
-  // var filteredProductsList = useMemo(getFilteredList, [selectedCategory, filteredProductsByCategory]);
+ 
   const filteredImages = images.filter((image) => products.filter((product) => product.product.id === image.product_id));
-  // console.log(filteredImages);
-
-
+  
   const handleSortChange = (e) => {
     setSortOrder(e.target.value);
   };
@@ -94,48 +74,47 @@ export default function ProductsGrid({ productsData, uniqueProducts, categories,
 
 
   return (
-    <section className='grid sm:grid-cols-1 mb-10 lg:grid-cols-3 gap-4 col-span-3'>
-      <div className='filter-container'>
-        <div>Filter by Category:</div>
-        <div>
-          <select
-            name='category-list'
-            id='category-list'
-            defaultValue=''
-            ref={categoryId}
-            onChange={handleCategoryChange}
-          >
-            <option value=''>All</option>
-            {categoriesData.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+    <section className='grid sm:grid-cols-2 mb-10 lg:grid-cols-3 gap-4 col-span-2 lg:col-span-4'>
+      <div id='sort-filter-container' className='grid col-span-2 w-[80%] sm:grid-cols-2 gap-4 sm:w-full lg:col-span-full mx-auto rounded-lg border-2 border-theme-dark-teal p-2'>
+        <div className='filter-container m-2'>
+          <h4 className='font-playfair'>Filter by Category:</h4>
+          <form className=''>
+            <select
+              name='category-list'
+              id='category-list'
+              className='border-2 border-theme-teal rounded-md p-2 mt-2 w-full'
+              defaultValue=''
+              ref={categoryId}
+              onChange={handleCategoryChange}
+            >
+              <option value=''>All</option>
+              {categoriesData.map((category) => (
+                <option key={category.name} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </form>
+        </div>
+        <div className="sort-container m-2">
+          <form>
+            <h4 className='font-playfair'>Sort By:</h4>
+            <select 
+              name="" 
+              id="" 
+              className='border-2 border-theme-teal rounded-md p-2 mt-2 w-full'
+              onChange={handleSortChange}
+            >
+              <option value=''>Select</option>
+              <option value="high-to-low">Price - High to Low</option>
+              <option value="low-to-high">Price - Low to High</option>
+            </select>
+          </form>
         </div>
       </div>
-      <div className="grid rounded-lg border-4 p-4">
-        <form>
-          <h4>Sort By:</h4>
-          <select name="" id="" onChange={handleSortChange}>
-            <option value=''>Select</option>
-            <option value="high-to-low">Price - High to Low</option>
-            <option value="low-to-high">Price - Low to High</option>
-          </select>
-        </form>
-      </div>
       {products.map((product) => (
-        <Product key={product.product.id} product={product.product} images={images} />
+        <Product key={product.product.id + product.product.name} product={product.product} images={filteredImages} />
       ))}
-
-      {/* {products.map((product) => (
-        <div key={product.id} className='border-theme-rust border-2 rounded-lg p-3 w-50 h-75'>
-                   <h3>{product.name}</h3>
-                   <SortedImages id={product.id} />
-                   <p>{product.price}</p>
-                   <ProductDetails id={product.id} />
-                   </div>
-      ))} */}
     </section>
   );
 }

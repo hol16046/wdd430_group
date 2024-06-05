@@ -17,10 +17,6 @@ export default async function ProductsWrapper() {
 
   return (
     <>
-        <aside id='filters' className='hidden sm:grid'>
-            {/* <Filter />
-            <Sort setSortOrder={setSortOrder} /> */}
-       </aside>
       <Suspense fallback={<ProductsGridSkeleton />}>
         <ProductsGrid productsData={products} uniqueProducts={uniqueProducts} categories={categories} images={images} />
       </Suspense>

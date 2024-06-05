@@ -8,10 +8,10 @@ import { SelectProduct, SelectProductImage } from '@/app/lib/definitions';
 
 export default function Product({product, images }: { product: SelectProduct, images: SelectProductImage[] }) {
   
-  //console.log('images:', images)
-  //console.log('product:', product)
+  // console.log('images:', images)
+  // console.log('product:', product)
   const imageData = images.filter((image) => image.product_id === product.id);
-  //console.log('imageData:', imageData)
+  // console.log('imageData:', imageData)
   
 
   if (!product) {
@@ -34,77 +34,38 @@ export default function Product({product, images }: { product: SelectProduct, im
 
 
   return (
-    <div className="grid grid-cols-3 rounded-lg border-theme-rust border-2 p-3 h-full">
+    <div className="grid grid-cols-3 col-span-2 md:col-span-1 w-full mx-auto rounded-lg border-theme-rust border-2 p-3">
       {/* Render the product image */}
-      <div className="col-span-3 justify-center w-full  h-40 overflow-hidden">
+      <div className="col-span-3 sm:col-span-3 justify-center h-40 overflow-hidden relative">
         <Image
-          className="rounded-md justify-self-center col-span-3"
+          className="rounded-md self-center justify-self-center"
           src={imageFile} 
-          width={250}
-          height={250}
+          objectFit='cover'
+          fill
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          // width={250}
+          // height={250}
           alt={altText}
         />
       </div>
-      {/* Render product name */}
-      <h3 className="text-sm p-1 col-span-3">
-        <a href="#" className="hover:text-theme-rust">
-          {product && product.name} {/* Ensure product is not null before accessing its properties */}
-        </a>
-      </h3>
-      {/* Render product price */}
-      <p className="text-theme-dark-teal text-sm font-medium self-center p-1">
-        ${product && product.price} {/* Ensure product is not null before accessing its properties */}
-      </p>
-      {/* Render add to cart button */}
-      <div className="flex items-center justify-center w-full text-md overflow-hidden col-span-2 mx-2" >
-      <ProductDetails id={product.id} />
+      <div className='col-span-3 justify-self-center'>
+        {/* Render product name */}
+        <h3 className="text-sm p-1 ">
+          <a href="#" className="hover:text-theme-rust">
+            {product && product.name} {/* Ensure product is not null before accessing its properties */}
+          </a>
+        </h3>
       </div>
+      <div className='col-span-1 self-center justify-self-center'>
+        {/* Render product price */}
+        <p className="text-theme-dark-teal text-sm font-medium self-center p-1">
+          ${product && product.price} {/* Ensure product is not null before accessing its properties */}
+        </p>
+      </div>
+        {/* Render product details button */}
+        <div className="flex items-center justify-center w-full text-md overflow-hidden col-span-2 mx-2" >
+          <ProductDetails id={product.id} />
+        </div>
     </div>
   );
 }
-
-
-// export default async function Product({ id }: { id: number }) {
-  
-//   const [
-//     product, 
-//     images, 
-//   ] = await Promise.all([
-//     fetchProductData(id),
-//     fetchProductImages(id),  
-//   ]);
- 
-//   if (!product) {
-//     notFound();
-//   };
-
-//   return (
-//     <div className="grid grid-cols-3 rounded-lg border-theme-rust border-2 p-3 h-full">
-//       {/* Render the product image */}
-//       <div className="col-span-3 justify-center w-full  h-40 overflow-hidden">
-//       <Image
-//         className="rounded-md justify-self-center col-span-3"
-//         src={images[0].image_file} 
-//         width={250}
-//         height={250}
-//         sizes='30vw'
-//         alt={images[0].alt_text}
-//       />
-//       </div>
-//       {/* Render product name */}
-//       <h3 className="text-sm p-1 col-span-3">
-//         <a href="#" className="hover:text-theme-rust">
-//           {product && product.name} {/* Ensure product is not null before accessing its properties */}
-//         </a>
-//       </h3>
-//       {/* Render product price */}
-//       <p className="text-theme-dark-teal text-sm font-medium self-center p-1">
-//         ${product && product.price} {/* Ensure product is not null before accessing its properties */}
-//       </p>
-//       {/* Render add to cart button */}
-//       <div className="flex items-center justify-center w-full text-md overflow-hidden col-span-2 mx-2" >
-//       <ProductDetails id={product.id} />
-//       </div>
-//     </div>
-//   );
-// }
