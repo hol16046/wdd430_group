@@ -11,7 +11,7 @@ export const metadata: Metadata = {
  
 export default function LoginPage() {
   return (
-    <>
+    <div className='font-red-hat'>
     <Header />
     <main className="font-red-hat flex items-center justify-center mb-12">
       <div className="relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4">
@@ -23,6 +23,6 @@ export default function LoginPage() {
       </div>
     </main>
     <Footer />
-    </>
+    </div>
   );
 }

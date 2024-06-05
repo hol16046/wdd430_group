@@ -152,6 +152,26 @@ export async function fetchSellerById(id: number) {
   }
 }
 
+export async function fetchAllSellers() {
+  // noStore();
+  try {
+    const seller_data = await sql<SelectSeller>`
+      SELECT
+        sellers.id,
+        sellers.user_id,
+        sellers.shop_name,
+        sellers.shop_story,
+        sellers.shop_logo,
+        sellers.shop_profile
+        FROM sellers`;
+      
+    const sellers = seller_data.rows;
+    return sellers;
+  } catch (error) {
+    throw new Error('Failed to fetch all seller data.');
+  }
+}
+
 export async function fetchUserData(id: number) {
   noStore();
   try {

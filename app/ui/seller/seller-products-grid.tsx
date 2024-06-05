@@ -20,7 +20,6 @@ export default function SellerProductsGrid({ productsData, images, seller }: { p
 
   return (
     <section className='grid sm:grid-cols-2 mb-10 lg:grid-cols-3 gap-4 col-span-full'>
-      <h1 className='font-playfair text-2xl font-bold col-span-full justify-self-center'>{seller.shop_name}</h1>
       <div id='buttons' className='grid col-span-full grid-cols-2'>
         <AddNewProduct id={seller.id} />
         <AddNewProductImage id={seller.id} />

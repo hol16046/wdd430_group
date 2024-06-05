@@ -1,13 +1,10 @@
 import { fetchSellerData } from '../../lib/data';
 import Image from "next/image"
 import { SellerDetails } from './buttons';
+import { SelectSeller } from '@/app/lib/definitions';
 
-export default async function Seller({ user_id }: { user_id: number }) {
- 
-  const [ seller ] = await Promise.all([
-    
-    fetchSellerData(user_id) 
-  ]);
+export default function Seller({ seller }: { seller: SelectSeller }) {
+ const id = seller.user_id;
 
   if (!seller ) {
     return null; 
@@ -32,7 +29,7 @@ export default async function Seller({ user_id }: { user_id: number }) {
           {seller && seller.shop_name} {/* Ensure seller is not null before accessing its properties */}
       </h3>
       {/* Render Details page */}
-      <SellerDetails id={user_id} />
+      <SellerDetails id={id} />
     </div>
   );
 }

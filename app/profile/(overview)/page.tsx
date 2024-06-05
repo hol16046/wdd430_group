@@ -6,10 +6,9 @@ import  { EditProfile } from '@/app/ui/seller/buttons';
 import { Metadata } from "next";
 import { SelectUser } from '@/app/lib/definitions';
 import { SessionContext, SessionProvider, useSession } from 'next-auth/react';
-import PageContent from '../pagecontent';
 import { auth } from '@/auth';
 import Head from 'next/head';
-import { fetchUserData } from '@/app/lib/data';
+import { fetchUserData, fetchSellerData } from '@/app/lib/data';
 import { sql } from '@vercel/postgres';
 
 export const metadata: Metadata = {
@@ -17,33 +16,47 @@ export const metadata: Metadata = {
   };
 
 
-
-export default async function Page({ user }: { user: SelectUser }) {
+export default async function Page() {
     const session = await auth(); 
     const id = session?.user?.id
     const users = fetchUserData(Number(id))
+    const seller = fetchSellerData(Number(id))
 
+    // const session = await auth(); 
+    // const id = session?.user?.id
+    // const seller = fetchSellerData(Number(id))
     if (!session || !session?.user) {
-        return <div>You are not authorized to view this page.</div>;
+        return (
+            <main className='mx-auto font-red-hat'>
+                <Header/>
+                <div className='grid mx-auto py-5 h-[100vw] sm:h-[65vw] md:h-[30vw] w-[80%]'>
+                    <div className='col-span-full self-center justify-self-center font-semibold text-center text-2xl text-theme-rust'>Sorry, you are not authorized to view this page.</div>
+                    <Link
+                        href={`/profile`}
+                        className='form-btn col-span-full mt-2 self-center justify-self-center'>
+                        Back to Profile
+                    </Link>
+                </div>
+                <Footer />
+
+            </main>
+        );
     }
 
 
     return (
-        <>
+        <main className='mx-auto font-red-hat'>
             <Header/>
-            <div className='md:container mx-auto'>
-                <h1>{(await users).role === 'seller' ? 'Sellers Profile Page' : 'User Profile Page'}</h1>
-                <h2>Welcome {(await users).f_name} {(await users).l_name}</h2>
-                <h3>{(await users).email}</h3>
-
-                <EditProfile id={id} />
+            <div className='md:container mx-auto grid gap-1 sm:grid-cols-2'>
+                <h1 className='font-red-hat text-xl font-semibold self-center justify-self-center text-center sm:text-left'>Welcome {(await users).f_name} {(await users).l_name}</h1>
+                {(await users).role === 'seller' ? <EditProfile id={id} /> : (null)}
             </div>
             <div className='container grid grid-cols-1 lg:grid-cols-5 gap-4 mx-auto w-full p-4'>
                 {/* @ts-expect-error Server Component */}
-                <SellerProductsWrapper />
+                {(await users).role === 'seller' ? <SellerProductsWrapper user={(await users)} seller={(await seller)} /> : (null)}
             </div>
             <Footer />
 
-        </>
+        </main>
     );
 }

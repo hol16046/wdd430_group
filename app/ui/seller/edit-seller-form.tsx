@@ -68,16 +68,18 @@ export default function EditSellerForm({ seller }: { seller: SelectSeller }) {
               </p>
             ))}
         </div>
-        <Link
-          href={`/profile`}
-          className='form-btn col-span-2 mt-2 self-center justify-self-start'>
-          Cancel
-        </Link>
-        <button
-          type='submit'
-          className='form-btn col-span-3 mt-2 self-center justify-self-end'>
-          Update Profile
-        </button>
+        <div className='col-span-5 grid grid-cols-5'>
+          <Link
+            href={`/profile`}
+            className='form-btn col-span-2 mt-2 self-center justify-self-start'>
+            Back to Profile
+          </Link>
+          <button
+            type='submit'
+            className='form-btn col-span-3 mt-2 self-center justify-self-end'>
+            Update Profile
+          </button>
+        </div>
       </form>
       <div className='justify-self-center text-theme-rust font-semibold text-2xl'>
         <p>{state?.message}</p>
