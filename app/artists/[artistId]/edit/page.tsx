@@ -7,7 +7,7 @@ import { SelectSeller } from '@/app/lib/definitions';
  
 export default async function EditProductPage({ params }: { params: { artistId: number }}) {
   const id = params.artistId;
-  const seller = await fetchSellerById(1);
+  const seller = await fetchSellerById(id);
 
   if (!seller) {
     notFound();
