@@ -9,7 +9,7 @@ import SellerProfile from './seller-profile';
 
 export default async function SellerWrapper(id) {
   console.log('id:', id)
-  const sellerData = fetchSellerData(parseInt(id.id));
+  const sellerData = fetchSellerData(parseInt(id.user.id));
   const userData = fetchUserData(id.id);
   const allProducts = fetchAllProducts();
   const allImages = fetchAllProductImages();
