@@ -32,7 +32,7 @@ const eventData = {
 
 export default function Calendar() {
   return (
-    <div className="rounded-lg border-rust border-2 p-1 text-center">
+    <div className="hidden md:inline-block rounded-lg border-rust border-2 p-1 text-center">
       <h1 className="font-bold text-md">Community Calendar</h1>
       <h2 className="font-bold text-sm">June 2024</h2>
       <ul>

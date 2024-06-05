@@ -28,69 +28,35 @@ export default async function Features(){
 
     return(
         
-        <div className="grid-wrap rounded-lg border-4 p-4 mb-1">
-            <h3>Featured Artist</h3>
-            <div>
-                <Image
-                src={seller.shop_logo}
-                width={200}
-                height={150}
-                className="hidden md:block"
-                alt={seller.shop_name}
-                />
-                <h4>{seller.shop_name}</h4>
-            </div>
-                 {/* @ts-expect-error Server Component */}
-                <SellerDetails id={seller.user_id} /> 
-            <h3 className='mt-10'>Featured Product</h3>
-            <div>
-                <Image
-                src={images[0].image_file}
-                width={200}
-                height={150}
-                className="hidden md:block"
-                alt={product.name}
-                />
-                <h4>{product.name}</h4>
-
-    {/* const alt = seller.shop_name + ' logo';
-    if (!seller.user_id) {
-        id=4
-    } else {
-        id = seller.user_id;
-    }
-
-    return (
-        <div className="grid grid-cols-2 rounded-lg border-4 p-4 mx-auto">
-            <div className='justify-self-center self-center'>
-                <h3>Featured Artist</h3>
+        <div className='rounded-lg border-2 border-theme-dark-teal p-4'>
+            <div id='feat-artist-container' className=''>
+                <h3 className='font-playfair text-center'>Featured Artist</h3>
                 <div>
                     <Image
                     src={seller.shop_logo}
                     width={200}
                     height={150}
-                    className="hidden md:block rounded-md"
-                    alt={alt}
+                    className="hidden md:block"
+                    alt={seller.shop_name}
                     />
-                    <h4>{seller.shop_name}</h4>
+                    <h4 className='text-center'>{seller.shop_name}</h4>
                 </div>
-                <SellerDetails id={id} /> 
-
+                <SellerDetails id={seller.user_id} /> 
             </div>
-            <div className='justify-self-center self-center'>
-                <h3 className='lg:mt-10'>Featured Product</h3>
+            <div id='feat-product-container' className=''>
+                <h3 className='font-playfair text-center lg:mt-10'>Featured Product</h3>
                 <div>
                     <Image
                     src={images[0].image_file}
                     width={200}
                     height={150}
-                    className="hidden md:block rounded-md"
-                    alt={images[0].alt_text}
+                    className="hidden md:block"
+                    alt={product.name}
                     />
-                    <h4>{product.name}</h4>
-                </div>
-                <ProductDetails id={product.id} /> */}
-            </div> 
+                    <h4 className='text-center'>{product.name}</h4>
+                </div> 
+                <ProductDetails id={product.id} />
+            </div>
         </div>
     );
 }
