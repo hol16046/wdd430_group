@@ -44,8 +44,6 @@ export default async function Page({ user }: { user: SelectUser }) {
             </div>
             <Footer />
 
-            </div>
-
         </>
     );
 }
