@@ -3,7 +3,8 @@ import Image from "next/image"
 import { SellerDetails } from './buttons';
 
 export default async function Seller({ user_id }: { user_id: number }) {
- 
+ const id = Number(user_id);
+
   const [ seller ] = await Promise.all([
     
     fetchSellerData(user_id) 
