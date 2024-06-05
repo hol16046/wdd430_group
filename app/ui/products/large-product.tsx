@@ -29,7 +29,7 @@ export default function LargeProduct({ product, images }: { product: SelectProdu
 
       <div className='col-span-3 min-h-[400px] md:min-h-[500px] sm:w-[90%] md:w-full lg:w-[90%] sm:justify-self-center md:self-center h-full relative block'>
         {/* If there is more than one image, the carousel will be displayed, otherwise the image will be displayed */}
-        {images.length > 1 ? <ImgCarousel images={images} /> : <Image src={imageFile} fill alt={altText} className='object-cover md:w-[80%] rounded-md relative block' sizes='60vw' />}
+        {images.length > 1 ? <ImgCarousel images={images} /> : <Image src={imageFile} fill alt={altText} className='object-cover md:w-[80%] rounded-md relative block' sizes='(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw' />}
       </div>
       <p className="text-theme-dark-teal text-md font-medium self-center p-1">${product.price}</p>
       <button type="button" className="focus:outline-none text-white bg-theme-dark-teal hover:bg-theme-rust focus:ring-4 focus:ring-theme-orange font-medium rounded-md text-sm px-5 py-2.5 col-span-2 self-center justify-self-end">Add to Cart</button>
