@@ -5,8 +5,8 @@ import Header from '@/app/ui/header/header';
 import Footer from '@/app/ui/footer';
 import { SelectSeller } from '@/app/lib/definitions';
  
-export default async function EditProductPage({ params }: { params: { id: number }}) {
-  const id = params.id;
+export default async function EditProductPage({ params }: { params: { artistId: number }}) {
+  const id = params.artistId;
   const seller = await fetchSellerById(1);
 
   if (!seller) {
