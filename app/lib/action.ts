@@ -176,7 +176,7 @@ export async function authenticate(
     if(!validatedFields.success) {
       return {
         errors: validatedFields.error.flatten().fieldErrors,
-        message: 'Missing Fields. Failed to Add Product.',
+        message: 'Missing Fields. Failed to Update Product.',
       };
     }
     const { name, description, price, stock } = validatedFields.data;
@@ -212,6 +212,68 @@ export async function authenticate(
         redirect(`/products/?message=${redirectMessage}`);
       }
     }
+  }
 
-    
+
+
+  // Logic for editing a seller
+
+  const SellerFormSchema = z.object({
+    id: z.coerce.number(),
+    user_id: z.coerce.number(),
+    shop_name: z.string({
+      invalid_type_error: 'Please enter a shop name.',
+    }),
+    shop_story: z.string({
+      invalid_type_error: 'Please enter a shop story',
+    }),
+    shop_logo: z.string({
+      invalid_type_error: 'Please enter a product description',
+    }),
+    shop_profile: z.string({
+      invalid_type_error: 'Please enter a product description',
+    }),
+  });
+
+  const EditSeller = SellerFormSchema.omit({ id: true, user_id: true, shop_logo: true, shop_profile: true});
+
+  export type EditSellerState = {
+    errors?: {
+      id?: string[];
+      shop_name?: string[];
+      shop_story?: string[];
+      shop_logo?: string[];
+      shop_profile?: string[];
+    };
+    key?: string;
+    message?: string;
+  };
+
+  export async function editSeller( sellerId: number, prevState: EditSellerState, formData: FormData) {
+    const sellers = schema.sellers;
+    const validatedFields = EditSeller.safeParse({
+      shop_name: formData.get('name'),
+      shop_story: formData.get('story'),
+    });
+
+    if(!validatedFields.success) {
+      return {
+        errors: validatedFields.error.flatten().fieldErrors,
+        message: 'Missing Fields. Failed to Update Seller.',
+      };
+    }
+    const { shop_name, shop_story } = validatedFields.data;
+
+    try {
+      await db.update(sellers)
+        .set({ shop_name: shop_name, shop_story: shop_story })
+        .where(eq(sellers.id, sellerId));
+      
+    } catch (error) {
+      console.error('Database Error:', error);
+      return { message: 'Failed to Update Seller.' };
+    }
+
+    revalidatePath('/products');
+    return { key: 'success', message: `${shop_name} updated successfully!`};
   }

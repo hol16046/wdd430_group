@@ -3,13 +3,12 @@
 import { type PutBlobResult } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
 import { useState, useRef, Suspense } from 'react';
-import { fetchAllProducts } from '@/app/lib/data';
+import { fetchAllProducts, fetchSellerById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import ImageUploadForm from '@/app/ui/products/add-new-img-form';
 import Header from '@/app/ui/header/header';
 import Footer from '@/app/ui/footer';
 import { SelectProduct } from '@/app/lib/definitions';
-import { Form } from '@/app/ui/products/upload-img-form';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,10 +17,13 @@ export const metadata: Metadata = {
 
 
  
-export default async function NewProductImageUploadPage() {
-  const products: SelectProduct[] = await fetchAllProducts();
+export default async function NewProductImageUploadPage(props) {
+  const url = props.searchParams;
+  const sellerId = parseInt(url.id);
+  const allProducts: SelectProduct[] = await fetchAllProducts();
+  const sellerProducts = allProducts.filter((product) => product.seller_id == sellerId);
 
-  if (!products) {
+  if (!sellerProducts) {
     notFound();
   }
 
@@ -29,7 +31,7 @@ export default async function NewProductImageUploadPage() {
     <main className="font-red-hat">
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
-        <ImageUploadForm products={products} />
+        <ImageUploadForm products={sellerProducts} />
       </Suspense>
       <Footer />
     </main>
