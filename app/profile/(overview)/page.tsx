@@ -35,7 +35,7 @@ export default async function Page() {
                 <h2>Welcome {(await users).f_name} {(await users).l_name}</h2>
                 <h3>{(await users).email}</h3>
 
-                {/* <EditProfile id={id} /> */}
+                <EditProfile id={id} />
             </div>
             <div className='container grid grid-cols-1 lg:grid-cols-5 gap-4 mx-auto w-full p-4'>
                 
