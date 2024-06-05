@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 
 
-export default async function Page({ user }: { user: SelectUser }) {
+export default async function Page() {
     const session = await auth(); 
     const id = session?.user?.id
     const users = fetchUserData(Number(id))
