@@ -47,8 +47,8 @@ export default async function Page() {
     return (
         <main className='mx-auto font-red-hat'>
             <Header/>
-            <div className='md:container mx-auto'>
-                <h1 className='font-red-hat text-xl font-semibold self-center justify-self-center'>Welcome {(await users).f_name} {(await users).l_name}</h1>
+            <div className='md:container mx-auto grid gap-1 sm:grid-cols-2'>
+                <h1 className='font-red-hat text-xl font-semibold self-center justify-self-center text-center sm:text-left'>Welcome {(await users).f_name} {(await users).l_name}</h1>
                 {(await users).role === 'seller' ? <EditProfile id={id} /> : (null)}
             </div>
             <div className='container grid grid-cols-1 lg:grid-cols-5 gap-4 mx-auto w-full p-4'>
