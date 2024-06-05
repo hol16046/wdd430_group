@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Message from '../ui/products/message';
 import dynamic from 'next/dynamic';
+import ProductsWrapper from '../ui/products/wrapper';
 
 const DynamicDeletedMessage = dynamic(() => import('../ui/products/message'), {
   ssr: false,
@@ -29,7 +30,8 @@ export default async function DeletedProductPage() {
       <div className="grid">
         <DynamicDeletedMessage />
       </div>
-      <ProductsGrid />
+      {/* @ts-expect-error Server Component */}
+      <ProductsWrapper />
       <Footer />
     </main>
   );
