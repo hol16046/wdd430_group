@@ -12,7 +12,7 @@ export const authConfig = {
       if (isOnProfile && !Session) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn && isOnProfile) {
+      } else if (isLoggedIn && nextUrl.pathname === '/login') {
         return Response.redirect(new URL('/profile', nextUrl));
       }
       return true;
