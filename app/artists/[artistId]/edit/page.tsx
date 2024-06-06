@@ -11,15 +11,15 @@ export default async function EditProductPage({ params }: { params: { artistId: 
   const user_id = params.artistId;
   console.log(user_id);
   const seller = await fetchSellerData(user_id);
+  const session = await auth(); 
+  console.log(session);
+  const sellerId = parseInt(session?.user?.id);
+  console.log(sellerId);
 
   if (!seller) {
     notFound();
   }
 
-  const session = await auth(); 
-  console.log(session);
-  const sellerId = parseInt(session?.user?.id);
-  console.log(sellerId);
     if (!session || !session?.user || user_id !== sellerId) {
         return (
             <main className='mx-auto font-red-hat'>
