@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 export default async function NewProductImageUploadPage(props) {
   const url = props.searchParams;
   const sellerId = parseInt(url.id);
+  const seller = await fetchSellerById(sellerId);
   const allProducts: SelectProduct[] = await fetchAllProducts();
   const sellerProducts = allProducts.filter((product) => product.seller_id == sellerId);
 
@@ -32,7 +33,7 @@ export default async function NewProductImageUploadPage(props) {
 
   const session = await auth(); 
   const id = parseInt(session?.user?.id);
-    if (!session || !session?.user || id !== sellerId) {
+    if (!session || !session?.user || id !== seller.user_id) {
         return (
             <main className='mx-auto font-red-hat'>
                 <Header/>

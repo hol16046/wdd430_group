@@ -17,7 +17,7 @@ export default async function EditProductPage({ params }: { params: { artistId: 
 
   const session = await auth(); 
   const sellerId = parseInt(session?.user?.id);
-    if (!session || !session?.user || seller.id !== sellerId) {
+    if (!session || !session?.user || id !== sellerId) {
         return (
             <main className='mx-auto font-red-hat'>
                 <Header/>
