@@ -20,7 +20,7 @@ export default async function EditProductPage({ params }: { params: { artistId: 
     notFound();
   }
 
-  if (!session || !session?.user || user_id !== sellerId) {
+  if (!session || !session?.user || user_id != sellerId) {
       return (
           <main className='mx-auto font-red-hat'>
               <Header/>
