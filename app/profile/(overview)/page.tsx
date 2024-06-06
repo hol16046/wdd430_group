@@ -22,9 +22,10 @@ export default async function Page() {
     const users = fetchUserData(Number(id))
     const seller = fetchSellerData(Number(id))
 
-    // const session = await auth(); 
-    // const id = session?.user?.id
-    // const seller = fetchSellerData(Number(id))
+    console.log('page', session, id, users, seller)
+    
+
+
     if (!session || !session?.user) {
         return (
             <main className='mx-auto font-red-hat'>
