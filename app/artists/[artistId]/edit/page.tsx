@@ -8,8 +8,9 @@ import { auth } from '@/auth';
 import Link from 'next/link';
  
 export default async function EditProductPage({ params }: { params: { artistId: number }}) {
-  const id = params.artistId;
-  const seller = await fetchSellerData(id);
+  const user_id = params.artistId;
+  console.log(user_id);
+  const seller = await fetchSellerData(user_id);
 
   if (!seller) {
     notFound();
@@ -17,7 +18,8 @@ export default async function EditProductPage({ params }: { params: { artistId: 
 
   const session = await auth(); 
   const sellerId = parseInt(session?.user?.id);
-    if (!session || !session?.user || id !== sellerId) {
+  console.log(sellerId);
+    if (!session || !session?.user || user_id !== sellerId) {
         return (
             <main className='mx-auto font-red-hat'>
                 <Header/>
