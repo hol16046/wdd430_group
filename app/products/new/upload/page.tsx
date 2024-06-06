@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import { useSearchParams } from 'next/navigation';
 import { auth } from '@/auth';
 import Link from 'next/link';
+import { fetchSellerById } from '@/app/lib/data';
 
 export const metadata: Metadata = {
     title: 'Upload Image',
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
 export default async function AddNewProductPage(props) {
   const url = props.searchParams;
   const sellerId = parseInt(url.id);
+  const seller = await fetchSellerById(sellerId);
+
 
   if (!sellerId) {
     notFound();
@@ -23,7 +26,7 @@ export default async function AddNewProductPage(props) {
 
   const session = await auth(); 
   const id = parseInt(session?.user?.id);
-    if (!session || !session?.user || id !== sellerId) {
+    if (!session || !session?.user || id !== seller.user_id) {
         return (
             <main className='mx-auto font-red-hat'>
                 <Header/>

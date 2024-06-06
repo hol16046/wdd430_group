@@ -200,8 +200,10 @@ export async function authenticate(
   // Logic for deleting a product
   export async function deleteProduct( id: number ) {
     let products = schema.products;
+    let product_images = schema.product_images;
     let redirectMessage = null;
     try {
+      await db.delete(product_images).where(eq(product_images.product_id, id));
       await db.delete(products).where(eq(products.id, id));
       redirectMessage = 'Product%20Deleted';
     } catch (error) {

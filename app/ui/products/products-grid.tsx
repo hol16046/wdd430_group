@@ -23,7 +23,10 @@ import { unique } from 'drizzle-orm/mysql-core';
 //   );
 // }
 
-
+const sortValues = [
+  { value: 'high-to-low', label: 'Price - High to Low' },
+  { value: 'low-to-high', label: 'Price - Low to High' },
+];
 
 
 
@@ -32,6 +35,7 @@ export default function ProductsGrid({ productsData, uniqueProducts, categories,
   const allProductsData = productsData;
   const categoriesData = categories;
   const categoryId = useRef<HTMLSelectElement>(null);
+  const sortOrderValue = useRef<HTMLSelectElement>(null);
   const [sortOrder, setSortOrder] = useState('high-to-low');
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
@@ -45,7 +49,8 @@ export default function ProductsGrid({ productsData, uniqueProducts, categories,
     const sortedProducts = [...products].sort((a, b) => {
       return sortOrder === 'high-to-low' ? b.product.price - a.product.price : a.product.price - b.product.price;
     });
-    if (!sortOrder) {
+    console.log(sortOrder);
+    if (sortOrder === '') {
       return;
     } else {
       setProducts(sortedProducts);
@@ -102,12 +107,16 @@ export default function ProductsGrid({ productsData, uniqueProducts, categories,
             <select 
               name="" 
               id="" 
+              ref={sortOrderValue}
               className='border-2 border-theme-teal rounded-md p-2 mt-2 w-full'
               onChange={handleSortChange}
             >
               <option value=''>Select</option>
-              <option value="high-to-low">Price - High to Low</option>
-              <option value="low-to-high">Price - Low to High</option>
+              {sortValues.map((sort) => (
+                <option key={sort.value} value={sort.value}>
+                  {sort.label}
+                </option>
+              ))}
             </select>
           </form>
         </div>
