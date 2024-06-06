@@ -17,6 +17,7 @@ export default async function EditProductPage({ params }: { params: { artistId: 
   }
 
   const session = await auth(); 
+  console.log(session);
   const sellerId = parseInt(session?.user?.id);
   console.log(sellerId);
     if (!session || !session?.user || user_id !== sellerId) {
